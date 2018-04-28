@@ -23,7 +23,8 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-
+src/gui/pyforms-master/
+.pytest_cache/
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
@@ -97,3 +98,31 @@ ENV/
 
 # mypy
 .mypy_cache/
+.idea/workspace.xml
+.idea/
+docs/~$atom.generate_result tree.xlsx
+~$FEATURES.xlsm
+.idea/vcs.xml
+tests/converters_tests/.pytest_cache/v/cache/lastfailed
+src/gui/pyforms-master.zip
+misc/results.xlsx
+PYFORMS install.txt
+src/delete_later.py
+src/gui/controls/checkbox.py
+src/gui/controls/line.py
+src/gui/controls/pushbutton.py
+src/gui/controls/toolbutton.py
+src/gui/main_gui.py
+src/gui/style.css
+src/kbmgr.py
+src/kbmgr_no_class.py
+tests/.pytest_cache/v/cache/lastfailed
+tests/.pytest_cache/v/cache/nodeids
+tests/converters_tests/.pytest_cache/v/cache/nodeids
+src/gui/controls/checkbox_NO USAGE.py
+src/gui/controls/line_NO USAGE.py
+src/gui/controls/toolbutton_NO USAGE.py
+src/gui/controls/pushbutton_NO USAGE.py
+misc/manual testing.txt
+misc/manual testing original.txt
+misc/manual testing hotkey specific.txt
