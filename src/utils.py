@@ -21,11 +21,6 @@ def delete_many(src, *args):
 
 
 def get_singular(clp):
-	"""
-	:type clp: str
-	:rtype: str
-	"""
-	# clp = clp.replace("'", '')
 	clp = delete_many(clp, "'", 'self.', '*')
 	if len(clp) >= 2 and clp.endswith('s'):
 		return clp[:-1]
@@ -43,7 +38,7 @@ def clipboard_changed():
 		yield from asyncio.sleep(0.01)
 		count += 1
 		new_clp = paste()
-		if new_clp != prev_clp or count >= 7:
+		if new_clp != prev_clp or count >= 4:
 			break
 	print(f'polled {count} times until clpbrd change')
 	return count

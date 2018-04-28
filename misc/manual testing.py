@@ -21,3 +21,4 @@ class MultipleInheritanceAndRType Super Hi init name str
 for self.collections
 for zip dict things
 for args
+
