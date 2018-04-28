@@ -105,7 +105,7 @@ class KeySequenceEdit(QKeySequenceEdit):
 			# print(f'releasing: {KeySequenceEdit._hotkeys[self.op_keyword]}')
 			# kb.release(KeySequenceEdit._hotkeys[self.op_keyword])
 			# print(kb.is_pressed(KeySequenceEdit._hotkeys[self.op_keyword]))
-			is_indented = self._is_indented()
+			is_indented = self._is_indented(stop=False)
 			print('\n')
 			"""kb.send('shift+end, ctrl+c')
 			self.loop.run_until_complete(clipboard_changed())
@@ -119,12 +119,7 @@ class KeySequenceEdit(QKeySequenceEdit):
 		result = line.finalize()
 		return result
 
-	def _is_indented(self):
-		print('\n\n\t!!_is_indented')
-		# return self._has_indentation(self._has_indentation)
-		return self._has_indentation(stop=False)
-
-	def _has_indentation(self, stop):
+	def _is_indented(self, stop):
 		kb.send('shift+home, ctrl+c')
 		self.loop.run_until_complete(clipboard_changed())
 		clp = paste()
@@ -133,7 +128,7 @@ class KeySequenceEdit(QKeySequenceEdit):
 			return True
 		else:
 			kb.send('home')
-			return False if stop else self._has_indentation(stop=True)
+			return False if stop else self._is_indented(stop=True)
 
 	"""def _has_indentation(self, fn=None):
 		kb.send('shift+home, ctrl+c')
@@ -169,10 +164,10 @@ class KeySequenceEdit(QKeySequenceEdit):
 			if '\t' in clp:
 				kb.send('right')
 				return True
-		return False"""
+		return False
 
 
-"""	def _ready_expression_new(self):
+	def _ready_expression_new(self):
 		if not KeySequenceEdit._gui_focused:
 			kb.send('home, shift+left, ctrl+c')
 			self.loop.run_until_complete(clipboard_changed())
