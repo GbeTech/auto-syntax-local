@@ -21,12 +21,14 @@ def test_2():
 
 
 def test_3():
+	expected = f"""def foo(self, p1, p2):
+	"""
 	assert (get_expression('\tdef foo p1 p2') ==
-	        f'def foo(self, p1, p2):\n\t')
+	        expected)
 
 
 def test_3_andahalf():
-	assert (get_expression('    def foo p1 p2') ==
+	assert (get_expression("""    def foo p1 p2""") ==
 	        f'def foo(self, p1, p2):\n\t')
 
 
