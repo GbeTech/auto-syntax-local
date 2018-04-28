@@ -4,8 +4,8 @@ print but sometimes fstring are not needed
 def func first_param
 def func Noned_param .None
 def func first_param defaulted_param .some_default_value
-def typed_func str typed_param str
 	def self_wasnt_mentioned_anywhere age int name .moshe
+def typed_func str typed_param str
 def no_kochavit_needed args kwargs
 my_first_list_comprehension = lcomp print self.messages
 apply_standard_methods = list dict min max collection
@@ -17,5 +17,7 @@ assigning_strings_is_fun_again = str My name is self.name and I am .age years ol
 class LookAtInitHowPretty init name
 class InheritanceAndInitDefaults Super init name .moshe
 class MultipleInheritanceAndRType Super Hi init name str
+	def self_wasnt_mentioned_anywhere age int name .moshe
 for self.collections
 for zip dict things
+for args
