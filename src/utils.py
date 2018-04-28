@@ -40,7 +40,7 @@ def clipboard_changed():
 		new_clp = paste()
 		if new_clp != prev_clp or count >= 40:
 			break
-	print(f'polled {count} times until clpbrd change')
+	# print(f'polled {count} times until clpbrd change')
 	return count
 
 

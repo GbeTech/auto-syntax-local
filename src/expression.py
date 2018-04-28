@@ -6,7 +6,7 @@ from utils import ignore
 # noinspection PyUnresolvedReferences,PyAttributeOutsideInit
 class Expression:
 
-	def __init__(self, clp, op_keyword=None):
+	def __init__(self, clp, is_indented, op_keyword=None):
 		"""
 		:type operator: Operator
 		:type atoms: list[Atom]
@@ -17,6 +17,8 @@ class Expression:
 		self.items_raw = []
 		self.set_equation_sides(clp)
 		self.set_operator_and_items(op_keyword)
+		with ignore(AttributeError):
+			self.operator.set_is_within_class(is_indented)
 		if self.l_side is not None and not self.operator.assignment_possible:
 			return
 		self.operator.construct_atoms(self.items_raw)
@@ -31,15 +33,16 @@ class Expression:
 			self.r_side = clp
 
 	def set_operator_and_items(self, op_keyword):
-		is_indented = self._remove_indentations()
+		# is_indented = self._remove_indentations()
 		if op_keyword is None:
 			op_keyword, *items = self.r_side.split()
 		else:
 			items = self.r_side.split()
 		self.operator = Operator.by_keyword(op_keyword)
 		self.items_raw = items
-		with ignore(AttributeError):
-			self.operator.set_is_within_class(is_indented)
+
+	# with ignore(AttributeError):
+	# 	self.operator.set_is_within_class(is_indented)
 
 	def _remove_indentations(self):
 		unchanged = self.r_side[:]
