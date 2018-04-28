@@ -1,0 +1,31 @@
+print .hi str .bye
+print hi self.bye
+
+def foo p1
+def foo p1 .None
+def foo p1 .1 p2
+def foo str p1 str
+my = def foo p1 .default p2 str
+    foo init age int name .moshe
+def what args kwargs
+
+my = lcomp collections
+lcomp self.collections
+
+list dict min max collection
+list hi self.bye
+
+my = dict min max .hi .bye lol str what
+dict 1 str zip self.bye
+
+my = str self.hi
+
+class foo init name
+class foo Super init name .moshe
+class Foo Super Hi init name str
+class Foo Super init age .3
+
+for dict min max collections
+for self.collections
+
+

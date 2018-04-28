@@ -1,0 +1,77 @@
+from main import magic_me
+
+
+def test_0():
+	assert magic_me('tuple hi bye') == "('hi', 'bye')"
+
+
+def test_1():
+	assert magic_me('tuple hi .bye') == "('hi', bye)"
+
+
+def test_2():
+	assert magic_me('my = tuple hi bye') == "my = ('hi', 'bye')"
+
+
+def test_3():
+	assert magic_me('my = tuple hi .bye') == "my = ('hi', bye)"
+
+
+def test_4():
+	assert magic_me('tuple dict min max collection') == 'tuple(dict(min(max(collection))))'
+
+
+def test_5():
+	assert magic_me('tuple dict min max collection1 collection2') == "(dict(min(max(collection1))), 'collection2')"
+
+
+def test_6():
+	assert magic_me(
+		'tuple dict min max collection1 collection2 .collection3') == "(dict(min(max(collection1))), 'collection2', " \
+	                                                                  "collection3)"
+
+
+def test_7():
+	assert magic_me(
+		'tuple dict min max collection1 collection2 str collection3') == "(dict(min(max(collection1))), 'collection2', " \
+	                                                                     "" \
+	                                                                     "" \
+	                                                                     "str(collection3))"
+
+
+def test_8():
+	assert magic_me('tuple dict .collection') == "tuple(dict('collection'))"
+
+
+def test_9():
+	assert magic_me(
+		'my = tuple dict min max collection1 collection2 str collection3') == "my = (dict(min(max(collection1))), " \
+	                                                                          "'collection2', str(collection3))"
+
+
+def test_10():
+	assert magic_me('tuple hi') == 'tuple(hi)'
+
+
+def test_11():
+	assert magic_me('tuple .hi') == "tuple('hi')"
+
+
+def test_12():
+	assert magic_me('my = tuple hi') == "my = tuple(hi)"
+
+
+def test_13():
+	assert magic_me('my = tuple .hi') == "my = tuple('hi')"
+
+
+def test_14():
+	assert magic_me('tuple 1 2') == "(1, 2)"
+
+
+def test_15():
+	assert magic_me('tuple 1 .2') == "(1, '2')"
+
+
+def test_26():
+	assert magic_me('tuple hi self.bye') == "('hi', self.bye)"
