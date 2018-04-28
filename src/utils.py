@@ -26,7 +26,7 @@ def get_singular(clp):
 	:rtype: str
 	"""
 	# clp = clp.replace("'", '')
-	clp = delete_many(clp, "'", 'self.')
+	clp = delete_many(clp, "'", 'self.', '*')
 	if len(clp) >= 2 and clp.endswith('s'):
 		return clp[:-1]
 	elif clp.startswith('i'):

@@ -8,8 +8,9 @@ class ForOperator(Operator, keyword='for'):
 		self.assignment_possible = False
 	
 	def _convert(self):
-		self.atoms[0].subject = self.atoms[0].subject.replace('self.', '')
-		converted = f'for {get_singular(self.atoms[0].subject)} in {self.atoms[0].result}:\n\t'
+		# self.atoms[0].subject = self.atoms[0].subject.replace('self.', '')
+		singular = get_singular(self.atoms[0].subject)
+		converted = f'for {singular} in {self.atoms[0].result.replace("*","")}:\n\t'
 		return converted
 	
 	def handle_atoms(self):

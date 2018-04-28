@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="279daca3-00ec-40ac-ad8a-b28b4c7adfbe" name="Default" comment="" />
+    <list default="true" id="60cc06e4-5807-4706-a262-55fbe1ca3191" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/src.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operators/for_operator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operators/for_operator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/converters_tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/converters_tests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/converters_tests/test_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/converters_tests/test_class.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/converters_tests/test_def.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/converters_tests/test_def.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/converters_tests/test_dict.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/converters_tests/test_dict.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/converters_tests/test_for.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/converters_tests/test_for.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/converters_tests/test_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/converters_tests/test_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/converters_tests/test_list_comp.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/converters_tests/test_list_comp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/converters_tests/test_print.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/converters_tests/test_print.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/converters_tests/test_set.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/converters_tests/test_set.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/converters_tests/test_str.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/converters_tests/test_str.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/converters_tests/test_tuple.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/converters_tests/test_tuple.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,58 +33,109 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-              <folding>
-                <element signature="e#160#193#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tabgroup.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/controls/tabgroup.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-              <folding>
-                <element signature="e#50#88#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UI.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/UI.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.6171875">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+          <file leaf-file-name="expression.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/expression.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <folding>
+                    <element signature="e#0#21#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="for_operator.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/operators/for_operator.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="324">
+                  <caret line="12" column="75" selection-start-line="12" selection-start-column="75" selection-end-line="12" selection-end-column="75" />
+                  <folding>
+                    <element signature="e#0#40#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="test_for.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/tests/converters_tests/test_for.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="724">
+                  <caret line="57" column="23" lean-forward="true" selection-start-line="57" selection-start-column="23" selection-end-line="57" selection-end-column="23" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+          <file leaf-file-name="key_sequence_edit.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/gui/controls/key_sequence_edit.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="216">
+                  <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="utils.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/utils.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1174">
+                  <caret line="52" column="24" lean-forward="true" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="atom.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/atom.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="391">
+                  <caret line="47" selection-start-line="47" selection-end-line="47" />
+                  <folding>
+                    <element signature="e#0#35#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="general_page.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/gui/pages/general_page.py">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>instan</find>
+      <find>from main import magic_me</find>
+      <find>magic_me</find>
+      <find>args</find>
     </findStrings>
+    <replaceStrings>
+      <replace />
+      <replace>from . import get_expression</replace>
+      <replace>get_expression</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/PyQt5_L/QtWidgets/QMainWindow.py" />
-        <option value="$PROJECT_DIR$/src/PyQt5_L/QtCore/QObject.py" />
-        <option value="$PROJECT_DIR$/src/PyQt5_L/QtCore/QAbstractEventDispatcher.py" />
-        <option value="$PROJECT_DIR$/src/gui/UI.py" />
-        <option value="$PROJECT_DIR$/src/PyQt5_L/QtWidgets/QTabWidget.py" />
-        <option value="$PROJECT_DIR$/src/PyQt5_L/QtWidgets/QWidget.py" />
-        <option value="$PROJECT_DIR$/src/gui/controls/tabgroup.py" />
-        <option value="$PROJECT_DIR$/src/__init__.py" />
+        <option value="$PROJECT_DIR$/tests/converters_tests/__init__.py" />
+        <option value="$PROJECT_DIR$/tests/converters_tests/test_class.py" />
+        <option value="$PROJECT_DIR$/tests/converters_tests/test_def.py" />
+        <option value="$PROJECT_DIR$/tests/converters_tests/test_dict.py" />
+        <option value="$PROJECT_DIR$/tests/converters_tests/test_for.py" />
+        <option value="$PROJECT_DIR$/src/atom.py" />
+        <option value="$PROJECT_DIR$/src/operators/for_operator.py" />
       </list>
     </option>
   </component>
@@ -71,9 +145,7 @@
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
-      <showMembers Scope="false" />
-      <autoscrollToSource Scope="true" />
-      <autoscrollFromSource Scope="true" />
+      <autoscrollFromSource ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -89,63 +161,53 @@
               <item name="auto-syntax-local" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <expand>
             <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="auto-syntax-local" type="cbb8eebc:String" user="auto-syntax-local" />
+              <item name="auto-syntax-local" type="b2602c69:ProjectViewProjectNode" />
+              <item name="auto-syntax-local" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="auto-syntax-local" type="cbb8eebc:String" user="auto-syntax-local" />
-              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="auto-syntax-local" type="b2602c69:ProjectViewProjectNode" />
+              <item name="auto-syntax-local" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+              <item name="controls" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="auto-syntax-local" type="cbb8eebc:String" user="auto-syntax-local" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="gui" type="cbb8eebc:String" user="gui" />
+              <item name="auto-syntax-local" type="b2602c69:ProjectViewProjectNode" />
+              <item name="auto-syntax-local" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="auto-syntax-local" type="cbb8eebc:String" user="auto-syntax-local" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="gui" type="cbb8eebc:String" user="gui" />
-              <item name="controls" type="cbb8eebc:String" user="controls" />
+              <item name="auto-syntax-local" type="b2602c69:ProjectViewProjectNode" />
+              <item name="auto-syntax-local" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="operators" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="auto-syntax-local" type="cbb8eebc:String" user="auto-syntax-local" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="PyQt5_L" type="cbb8eebc:String" user="PyQt5_L" />
+              <item name="auto-syntax-local" type="b2602c69:ProjectViewProjectNode" />
+              <item name="auto-syntax-local" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="auto-syntax-local" type="cbb8eebc:String" user="auto-syntax-local" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="PyQt5_L" type="cbb8eebc:String" user="PyQt5_L" />
-              <item name="QtCore" type="cbb8eebc:String" user="QtCore" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="auto-syntax-local" type="cbb8eebc:String" user="auto-syntax-local" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="PyQt5_L" type="cbb8eebc:String" user="PyQt5_L" />
-              <item name="QtWidgets" type="cbb8eebc:String" user="QtWidgets" />
+              <item name="auto-syntax-local" type="b2602c69:ProjectViewProjectNode" />
+              <item name="auto-syntax-local" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="converters_tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="editor.preferences.gutterIcons" />
+    <property name="SearchEverywhereHistoryKey" value="general&#9;null&#9;null&#10;key&#9;null&#9;null" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -159,7 +221,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python tests.py.test for converters_tests.test_for.test_13">
     <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="auto-syntax-local" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -178,8 +240,75 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="py.test for converters_tests.test_class.test_0" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="auto-syntax-local" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;converters_tests.test_class.test_0&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="py.test for converters_tests.test_for.test_13" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="auto-syntax-local" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;converters_tests.test_for.test_13&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="py.test in converters_tests" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="auto-syntax-local" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/converters_tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/converters_tests&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+    </configuration>
+    <configuration name="py.test in test_class.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="auto-syntax-local" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/converters_tests/test_class.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.__init__" />
+      <item itemvalue="Python tests.py.test for converters_tests.test_class.test_0" />
+      <item itemvalue="Python tests.py.test in test_class.py" />
+      <item itemvalue="Python tests.py.test in converters_tests" />
+      <item itemvalue="Python tests.py.test for converters_tests.test_for.test_13" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.py.test in converters_tests" />
+        <item itemvalue="Python tests.py.test for converters_tests.test_for.test_13" />
+        <item itemvalue="Python tests.py.test in test_class.py" />
+        <item itemvalue="Python tests.py.test for converters_tests.test_class.test_0" />
         <item itemvalue="Python.__init__" />
       </list>
     </recent_temporary>
@@ -189,104 +318,102 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="279daca3-00ec-40ac-ad8a-b28b4c7adfbe" name="Default" comment="" />
-      <created>1524871827898</created>
+      <changelist id="60cc06e4-5807-4706-a262-55fbe1ca3191" name="Default" comment="" />
+      <created>1524932361953</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1524871827898</updated>
+      <updated>1524932361953</updated>
     </task>
     <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="py_test_in_converters_tests - 2018.04.28 at 19h 42m 12s.xml">
+      <configuration name="py.test in converters_tests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_for_converters_tests_test_for_test_13 - 2018.04.28 at 19h 42m 34s.xml">
+      <configuration name="py.test for converters_tests.test_for.test_13" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_for_converters_tests_test_for_test_13 - 2018.04.28 at 19h 43m 30s.xml">
+      <configuration name="py.test for converters_tests.test_for.test_13" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_for_converters_tests_test_for_test_13 - 2018.04.28 at 19h 44m 24s.xml">
+      <configuration name="py.test for converters_tests.test_for.test_13" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_for_converters_tests_test_for_test_13 - 2018.04.28 at 19h 44m 54s.xml">
+      <configuration name="py.test for converters_tests.test_for.test_13" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_for_converters_tests_test_for_test_13 - 2018.04.28 at 19h 45m 27s.xml">
+      <configuration name="py.test for converters_tests.test_for.test_13" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_for_converters_tests_test_for_test_13 - 2018.04.28 at 19h 45m 43s.xml">
+      <configuration name="py.test for converters_tests.test_for.test_13" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_for_converters_tests_test_for_test_13 - 2018.04.28 at 19h 47m 08s.xml">
+      <configuration name="py.test for converters_tests.test_for.test_13" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_in_converters_tests - 2018.04.28 at 19h 50m 12s.xml">
+      <configuration name="py.test in converters_tests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_for_converters_tests_test_for_test_13 - 2018.04.28 at 19h 51m 32s.xml">
+      <configuration name="py.test for converters_tests.test_for.test_13" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1015" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="top" content_ui="combo" x="3162" y="30" width="677" height="467" id="Project" order="0" type="FLOATING" weight="0.20104167" />
+      <window_info anchor="top" content_ui="combo" x="1145" y="1689" width="775" height="390" id="Project" order="0" type="FLOATING" visible="true" weight="0.20104167" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32990867" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.12729844" side_tool="true" weight="0.5160622" />
-      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" weight="0.32962963" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.31969026" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32962963" />
       <window_info anchor="bottom" x="838" y="1570" width="958" height="508" id="Python Console" order="9" sideWeight="0.49894625" type="FLOATING" weight="0.39159292" />
+      <window_info anchor="bottom" auto_hide="true" x="0" y="1458" width="1143" height="621" id="Run" internal_type="SLIDING" order="3" sideWeight="0.49717113" type="FLOATING" visible="true" weight="0.17367257" />
       <window_info id="Structure" order="0" side_tool="true" weight="0.24947916" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3287037" />
       <window_info id="Favorites" order="1" side_tool="true" weight="0.32916668" />
+      <window_info active="true" anchor="right" x="841" y="1080" width="1006" height="524" id="Debug" internal_type="SLIDING" order="4" sideWeight="0.8727016" type="FLOATING" visible="true" weight="0.33489582" />
       <window_info anchor="bottom" id="Code comment" order="11" visible="true" weight="0.3294979" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" auto_hide="true" x="3509" y="490" width="330" height="508" id="Run" internal_type="SLIDING" order="3" sideWeight="0.49717113" type="FLOATING" weight="0.17367257" />
       <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.3296146" />
-      <window_info anchor="right" x="432" y="482" width="1351" height="518" id="Debug" internal_type="SLIDING" order="4" sideWeight="0.8727016" type="FLOATING" weight="0.33489582" />
       <window_info anchor="right" x="0" y="0" width="430" height="880" id="Documentation" order="3" weight="0.32972974" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.31969026" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="1" />
     </layout>
-    <layout-to-restore>
-      <window_info anchor="bottom" id="Code comment" order="11" visible="true" weight="0.3294979" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="top" content_ui="combo" x="3446" y="372" width="393" height="461" id="Project" order="0" type="WINDOWED" visible="true" weight="0.20104167" />
-      <window_info id="Structure" order="0" side_tool="true" weight="0.24947916" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32990867" />
-      <window_info active="true" anchor="bottom" auto_hide="true" x="465" y="433" width="616" height="133" id="Run" internal_type="SLIDING" order="3" sideWeight="0.49717113" type="WINDOWED" visible="true" weight="0.17367257" />
-      <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.3296146" />
-      <window_info anchor="bottom" x="838" y="1570" width="958" height="508" id="Python Console" order="9" sideWeight="0.49894625" type="FLOATING" weight="0.39159292" />
-      <window_info anchor="right" x="918" y="482" width="83" height="34" id="Debug" internal_type="SLIDING" order="4" sideWeight="0.8727016" type="FLOATING" weight="0.33489582" />
-      <window_info anchor="right" x="0" y="0" width="430" height="880" id="Documentation" order="3" weight="0.32972974" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3287037" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.12729844" side_tool="true" weight="0.5160622" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.31969026" />
-      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" weight="0.32962963" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info id="Favorites" order="1" side_tool="true" weight="0.32916668" />
-    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/operators/for_operator.py</url>
+          <line>13</line>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/operators/for_operator.py</url>
+          <line>10</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/operators/for_operator.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="5" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/__init__.py">
+    <entry file="file://$PROJECT_DIR$/src/expression.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+        <state>
           <folding>
-            <element signature="e#160#193#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/controls/tabgroup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          <folding>
-            <element signature="e#50#88#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/UI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
-          <folding>
-            <element signature="e#160#193#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -295,71 +422,253 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
-            <element signature="e#0#68#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.1/system/python_stubs/-1120166012/PyQt5/QtWidgets/__init__.py">
+    <entry file="file://$PROJECT_DIR$/src/operators/for_operator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.1/system/python_stubs/-1120166012/PyQt5/QtWidgets/QTabWidget.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="24" lean-forward="true" selection-end-line="396" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PyQt5_L/QtWidgets/QTabWidget.py" />
-    <entry file="file://$PROJECT_DIR$/src/PyQt5_L/QtCore/QAbstractEventDispatcher.py" />
-    <entry file="file://$PROJECT_DIR$/src/PyQt5_L/QtWidgets/QWidget.py" />
-    <entry file="file://$PROJECT_DIR$/src/PyQt5_L/QtWidgets/QMainWindow.py" />
-    <entry file="file://$PROJECT_DIR$/src/PyQt5_L/QtCore/QObject.py" />
-    <entry file="file://$PROJECT_DIR$/src/gui/UI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/controls/tabgroup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        <state relative-caret-position="270">
+          <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
           <folding>
-            <element signature="e#50#88#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/converters_tests/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="36" column="26" lean-forward="true" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/controls/key_sequence_edit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2808">
+          <caret line="114" column="8" selection-start-line="114" selection-start-column="8" selection-end-line="116" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/expression.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/atom.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/converters_tests/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/controls/key_sequence_edit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/operators/for_operator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="11" column="52" lean-forward="true" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/expression.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/atom.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/converters_tests/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/controls/key_sequence_edit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="23" column="33" lean-forward="true" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/operators/for_operator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/expression.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/atom.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/operators/for_operator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/controls/key_sequence_edit.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/converters_tests/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="37" selection-start-column="37" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/expression.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+        <state relative-caret-position="81">
+          <caret line="3" column="35" lean-forward="true" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/controls/key_sequence_edit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/pages/general_page.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/converters_tests/test_dict.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="61" column="26" lean-forward="true" selection-start-line="61" selection-start-column="26" selection-end-line="61" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/converters_tests/test_def.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding>
-            <element signature="e#160#193#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+    <entry file="file://$PROJECT_DIR$/tests/converters_tests/test_class.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="28" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/converters_tests/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/atom.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1174">
+          <caret line="52" column="24" lean-forward="true" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/converters_tests/test_for.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="724">
+          <caret line="57" column="23" lean-forward="true" selection-start-line="57" selection-start-column="23" selection-end-line="57" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/operators/for_operator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="12" column="75" selection-start-line="12" selection-start-column="75" selection-end-line="12" selection-end-column="75" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

@@ -1,21 +1,21 @@
-from main import magic_me
+from . import get_expression
 
 tri_quote = '"""'
 
 
 def test_0():
-	assert magic_me(f'class foo') == f'class foo:\n\t'
+	assert get_expression(f'class foo') == f'class foo:\n\t'
 
 
 def test_1():
-	assert magic_me(f'class foo Super') == f'class foo(Super):\n\t'
+	assert get_expression(f'class foo Super') == f'class foo(Super):\n\t'
 
 
 def test_2():
 	expected = f"""class foo:
 	def __init__(self):
 	"""
-	assert magic_me(f'class foo init') == expected
+	assert get_expression(f'class foo init') == expected
 
 
 def test_3():
@@ -23,7 +23,7 @@ def test_3():
 	def __init__(self, name):
 		self.name = name
 	"""
-	assert magic_me(f'class foo init name') == expected
+	assert get_expression(f'class foo init name') == expected
 
 
 def test_4():
@@ -34,7 +34,7 @@ def test_4():
 		{tri_quote}
 		self.name = name
 	"""
-	assert magic_me(f'class foo init name str') == expected
+	assert get_expression(f'class foo init name str') == expected
 
 
 def test_5():
@@ -42,7 +42,7 @@ def test_5():
 	def __init__(self):
 		super().__init__()
 	"""
-	assert magic_me(f'class foo Super init') == expected
+	assert get_expression(f'class foo Super init') == expected
 
 
 def test_6():
@@ -51,7 +51,7 @@ def test_6():
 		self.name = name
 		super().__init__()
 	"""
-	assert magic_me(f'class foo Super init name') == expected
+	assert get_expression(f'class foo Super init name') == expected
 
 
 def test_7():
@@ -60,7 +60,7 @@ def test_7():
 		self.name = name
 		super().__init__()
 	"""
-	assert magic_me(f'class foo Super init name .moshe') == expected
+	assert get_expression(f'class foo Super init name .moshe') == expected
 
 
 def test_8():
@@ -72,13 +72,13 @@ def test_8():
 		self.name = name
 		super().__init__()
 	"""
-	assert magic_me(f'class foo Super init name str') == expected
+	assert get_expression(f'class foo Super init name str') == expected
 
 
 def test_9():
 	expected = f"""class foo(Super, Hi):
 	"""
-	assert magic_me(f'class foo Super Hi') == expected
+	assert get_expression(f'class foo Super Hi') == expected
 
 
 def test_10():
@@ -86,7 +86,7 @@ def test_10():
 	def __init__(self):
 		super().__init__()
 	"""
-	assert magic_me(f'class foo Super Hi init') == expected
+	assert get_expression(f'class foo Super Hi init') == expected
 
 
 def test_11():
@@ -96,7 +96,7 @@ def test_11():
 		self.age = age
 		super().__init__()
 	"""
-	assert magic_me(f"class Foo Super Hi init name age") == expected
+	assert get_expression(f"class Foo Super Hi init name age") == expected
 
 
 def test_12():
@@ -108,7 +108,7 @@ def test_12():
 		self.name = name
 		super().__init__()
 	"""
-	assert magic_me(f"class Foo Super Hi init name str") == expected
+	assert get_expression(f"class Foo Super Hi init name str") == expected
 
 
 def test_13():
@@ -116,7 +116,7 @@ def test_13():
 	def __init__(self, *args, **kwargs):
 		super().__init__()
 	"""
-	assert magic_me(f"class Foo Super init args kwargs") == expected
+	assert get_expression(f"class Foo Super init args kwargs") == expected
 
 
 def test_14():
@@ -124,7 +124,7 @@ def test_14():
 	def __init__(self, *args, **kwargs):
 		super().__init__()
 	"""
-	assert magic_me(f"class Foo Super init *args **kwargs") == expected
+	assert get_expression(f"class Foo Super init *args **kwargs") == expected
 
 
 def test_15():
@@ -133,4 +133,4 @@ def test_15():
 		self.age = age
 		super().__init__()
 	"""
-	assert magic_me(f"class Foo Super init age .3") == expected
+	assert get_expression(f"class Foo Super init age .3") == expected
