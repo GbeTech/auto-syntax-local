@@ -14,32 +14,33 @@ from gui.pages import *
 class UI(QObject):
 	has_focus = pyqtSignal(bool)
 	win_id = pyqtSignal(object)
-	
+
 	def setupUi(self, main_window):
 		# main window properties
 		self.main_window = main_window
-		self.main_window.resize(650, 550)
+		self.main_window.setFixedSize(650, 550)
+		# self.main_window.resize(650, 550)
 		self.main_window.setWindowTitle('autosyntax')
-		
+
 		# enter / leave signal definitions
 		self.main_window.enterEvent = lambda e: self.has_focus.emit(True)
 		self.main_window.leaveEvent = lambda e: self.has_focus.emit(False)
 		self.has_focus.connect(KeySequenceEdit.set_gui_has_focus)
-		
+
 		# win id signal
 		self.win_id.connect(KeySequenceEdit.set_win_id)
 		self.win_id.emit(self.main_window.winId())
-		
+
 		# set main operators tabs
 		self.setup_tabs()
-		
+
 		QtCore.QMetaObject.connectSlotsByName(self.main_window)
-	
+
 	def setup_tabs(self):
 		self.tabs_main = TabGroup(parent=self.main_window,
 		                          geometry=(20, 20, 600, 481),
 		                          )
-		
+
 		self.general_page = GeneralPage()
 		self.class_page = ClassPage()
 		self.def_page = DefPage()
@@ -52,7 +53,7 @@ class UI(QObject):
 		self.print_page = PrintPage()
 		self.str_page = StrPage()
 		self.about_page = AboutPage()
-		
+
 		self.tabs_main.addTab(self.general_page, 'General')
 		self.tabs_main.addTab(self.class_page, 'class')
 		self.tabs_main.addTab(self.def_page, 'def')
