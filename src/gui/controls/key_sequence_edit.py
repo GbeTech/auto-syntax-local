@@ -23,7 +23,7 @@ class KeySequenceEdit(QKeySequenceEdit):
 		super().__init__(*args)
 		boilerplate(self, **kwargs)
 		self.op_keyword = kwargs['op_keyword']
-		# self.general_loop = asyncio.get_event_loop()
+		self.loop = asyncio.get_event_loop()
 
 		# checkmark
 		self._checkmark = self._init_checkmark()
@@ -105,8 +105,9 @@ class KeySequenceEdit(QKeySequenceEdit):
 			# print(f'releasing: {KeySequenceEdit._hotkeys[self.op_keyword]}')
 			# kb.release(KeySequenceEdit._hotkeys[self.op_keyword])
 			# print(kb.is_pressed(KeySequenceEdit._hotkeys[self.op_keyword]))
-			kb.send('home+shift+end, ctrl+c')
-			self.general_loop.run_until_complete(clipboard_changed())
+			is_indented = self._is_indented()
+			kb.send('shift+end, ctrl+c')
+			self.loop.run_until_complete(clipboard_changed())
 			clp = paste()
 			result = self._get_expression(clp)
 			copy(result)
@@ -117,14 +118,61 @@ class KeySequenceEdit(QKeySequenceEdit):
 		result = line.finalize()
 		return result
 
-	@staticmethod
-	def _is_indented(clp):
+	def _is_indented(self):
+		return self._has_indentation(self._has_indentation)
+
+	def _has_indentation(self, fn):
 		kb.send('shift+home, ctrl+c')
+		self.loop.run_until_complete(clipboard_changed())
+		clp = paste()
+		if '\t' in clp:
+			kb.send('right')
+			return True
+		else:
+			kb.send('home')
+			return fn(fn=lambda: False)
+
+	"""def _has_indentation(self, fn=None):
+		kb.send('shift+home, ctrl+c')
+		self.loop.run_until_complete(clipboard_changed())
+		clp = paste()
+		print(f'\nfn is {fn}. clp: {clp}')
+		if '\t' in clp:
+			print('indentation found')
+			kb.send('right')
+			return True
+		else:
+			print('indentation not found')
+			if fn is None:
+				kb.send('home')
+				return self._has_indentation(fn=lambda: False)
+			else:
+				return fn()
+
+	def _is_indented_old(self):
+		kb.send('shift+home, ctrl+c')
+		self._has_indentation()
+		self.loop.run_until_complete(clipboard_changed())
+		clp = paste()
+		if '\t' in clp:
+			kb.send('right')
+			return True
+		else:
+			print(f'indentation not found, current clp: {paste()}')
+			kb.send('home')
+			kb.send('shift+home, ctrl+c')
+			self.loop.run_until_complete(clipboard_changed())
+			clp = paste()
+			if '\t' in clp:
+				kb.send('right')
+				return True
+		return False"""
+
 
 """	def _ready_expression_new(self):
 		if not KeySequenceEdit._gui_focused:
 			kb.send('home, shift+left, ctrl+c')
-			self.general_loop.run_until_complete(clipboard_changed())
+			self.loop.run_until_complete(clipboard_changed())
 			clp = paste()
 			print(clp.__repr__())
 """
