@@ -5,11 +5,6 @@ from gui.controls import KeySequenceEdit, TabGroup
 from gui.pages import *
 
 
-# from kbmgr_no_class import _set_keyboard_hotkey
-# from kbmgr import KeyboardManager
-# import kbmgr
-
-
 # noinspection PyArgumentList
 class UI(QObject):
 	has_focus = pyqtSignal(bool)
@@ -19,17 +14,12 @@ class UI(QObject):
 		# main window properties
 		self.main_window = main_window
 		self.main_window.setFixedSize(650, 550)
-		# self.main_window.resize(650, 550)
 		self.main_window.setWindowTitle('autosyntax')
 
 		# enter / leave signal definitions
 		self.main_window.enterEvent = lambda e: self.has_focus.emit(True)
 		self.main_window.leaveEvent = lambda e: self.has_focus.emit(False)
 		self.has_focus.connect(KeySequenceEdit.set_gui_has_focus)
-
-		# win id signal
-		self.win_id.connect(KeySequenceEdit.set_win_id)
-		self.win_id.emit(self.main_window.winId())
 
 		# set main operators tabs
 		self.setup_tabs()

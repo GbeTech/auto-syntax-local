@@ -38,7 +38,7 @@ def clipboard_changed():
 		yield from asyncio.sleep(0.0001)
 		count += 1
 		new_clp = paste()
-		if new_clp != prev_clp or count >= 35:
+		if new_clp != prev_clp or count >= 45:
 			break
 	print(f'\n\tpolled {count} times until clpbrd change')
 	return count

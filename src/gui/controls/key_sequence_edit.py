@@ -17,7 +17,8 @@ from utils import clipboard_changed, ignore
 class KeySequenceEdit(QKeySequenceEdit):
 	_hotkeys = {}
 	_gui_focused = False
-	_win_id = None
+
+	# _win_id = None
 
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args)
@@ -33,9 +34,9 @@ class KeySequenceEdit(QKeySequenceEdit):
 
 		self._validate_key_sequence()
 
-	@staticmethod
-	def set_win_id(value):
-		KeySequenceEdit._win_id = value
+	# @staticmethod
+	# def set_win_id(value):
+	# 	KeySequenceEdit._win_id = value
 
 	@staticmethod
 	def set_gui_has_focus(value):
