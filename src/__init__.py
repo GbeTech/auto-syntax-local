@@ -1,3 +1,5 @@
+import ctypes
+
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
 from gui.UI import UI
@@ -12,22 +14,33 @@ from gui.UI import UI
 		ret = self.keybinder.handler(eventType, message)
 		return ret, 0"""
 
+
+def check_if_admin():
+	try:
+		return ctypes.windll.shell32.IsUserAnAdmin()
+	except Exception:
+		return False
+
+
 if __name__ == "__main__":
 	import sys
 
-	app = QApplication(sys.argv)
-	# noinspection PyArgumentList
-	MainWindow = QMainWindow()
+	if check_if_admin():
+		app = QApplication(sys.argv)
+		# noinspection PyArgumentList
+		MainWindow = QMainWindow()
+		"""# keybinder
+		keybinder.init()
+		win_event_filter = WinEventFilter(keybinder)
+		event_dispatcher = QAbstractEventDispatcher.instance()
+		event_dispatcher.installNativeEventFilter(win_event_filter)"""
 
-	"""# keybinder
-	keybinder.init()
-	win_event_filter = WinEventFilter(keybinder)
-	event_dispatcher = QAbstractEventDispatcher.instance()
-	event_dispatcher.installNativeEventFilter(win_event_filter)"""
+		ui = UI()
+		ui.setupUi(MainWindow)
 
-	ui = UI()
-	ui.setupUi(MainWindow)
+		MainWindow.show()
 
-	MainWindow.show()
+		sys.exit(app.exec_())
 
-	sys.exit(app.exec_())
+	else:
+		ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, "", None, 1)

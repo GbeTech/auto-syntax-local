@@ -34,10 +34,6 @@ class KeySequenceEdit(QKeySequenceEdit):
 
 		self._validate_key_sequence()
 
-	# @staticmethod
-	# def set_win_id(value):
-	# 	KeySequenceEdit._win_id = value
-
 	@staticmethod
 	def set_gui_has_focus(value):
 		KeySequenceEdit._gui_focused = value
@@ -47,6 +43,7 @@ class KeySequenceEdit(QKeySequenceEdit):
 		if QKeyEvent.key() == Qt.Key_Escape:
 			self.clear()
 			self._remove_current_keyboard_hotkey()
+			self._toggle_checkmark(False)
 		else:
 			super().keyPressEvent(QKeyEvent)
 
@@ -65,7 +62,7 @@ class KeySequenceEdit(QKeySequenceEdit):
 			self._set_keyboard_hotkey(self.keySequence().toString())
 			self._toggle_checkmark(True)
 		else:
-			pass
+			self._toggle_checkmark(False)
 
 	def _init_checkmark(self):
 		# noinspection PyArgumentList
@@ -75,9 +72,10 @@ class KeySequenceEdit(QKeySequenceEdit):
 		return _checkmark
 
 	def _toggle_checkmark(self, green=True):
-		bg = lambda file: f'background: url(src/gui/visuals/{file}.png)'
+		bg = lambda file: f'background: url({file}.png)'
 		if green:
 			self._checkmark.setStyleSheet(bg('greensmall25'))
+		# self._checkmark.setStyleSheet(bg('redsmall25'))
 		else:
 			self._checkmark.setStyleSheet(bg('redsmall25'))
 
@@ -107,13 +105,12 @@ class KeySequenceEdit(QKeySequenceEdit):
 			# kb.release(KeySequenceEdit._hotkeys[self.op_keyword])
 			# print(kb.is_pressed(KeySequenceEdit._hotkeys[self.op_keyword]))
 
-			# is_indented = self._is_indented(stop_recursion=False)
 			kb.send('end+shift+home+shift+home, ctrl+c')
-			# kb.send('shift+end, ctrl+c')
 			self.loop.run_until_complete(clipboard_changed())
 			clp = paste()
 			kb.send('home+shift+end')
-			result = self._get_expression(clp, '\t' in clp or '    ' in clp)
+			is_indented = '\t' in clp or '    ' in clp
+			result = self._get_expression(clp, is_indented)
 			copy(result)
 			kb.send('ctrl+v')
 
@@ -122,7 +119,7 @@ class KeySequenceEdit(QKeySequenceEdit):
 		result = line.finalize()
 		return result
 
-	def _is_indented_old(self, stop_recursion):
+	"""def _is_indented_old(self, stop_recursion):
 		kb.send('shift+home, ctrl+c')
 		self.loop.run_until_complete(clipboard_changed())
 		clp = paste()
@@ -131,7 +128,7 @@ class KeySequenceEdit(QKeySequenceEdit):
 			return True
 		else:
 			kb.send('home')
-			return False if stop_recursion else self._is_indented_old(stop_recursion=True)
+			return False if stop_recursion else self._is_indented_old(stop_recursion=True)"""
 
 	"""def _has_indentation(self, fn=None):
 		kb.send('shift+home, ctrl+c')

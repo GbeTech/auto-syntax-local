@@ -12,7 +12,7 @@ def boilerplate(control, **kwargs):
 # else:
 # 	control.setFocusPolicy(Qt.NoFocus)
 
-
+# NO USAGE
 def get_font(family="Segoe UI", size=12, spacing=1.1):
 	font = QtGui.QFont()
 	font.setFamily(family)
@@ -21,6 +21,7 @@ def get_font(family="Segoe UI", size=12, spacing=1.1):
 	return font
 
 
+# NO USAGE
 def get_alignment(alignment):
 	alignments = {
 		'C':  Qt.AlignCenter,
@@ -31,5 +32,5 @@ def get_alignment(alignment):
 		'R':  Qt.AlignRight,
 		'L':  Qt.AlignLeft,
 		'J':  Qt.AlignJustify}
-	
+
 	return alignments[alignment]
