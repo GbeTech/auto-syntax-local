@@ -104,14 +104,16 @@ class KeySequenceEdit(QKeySequenceEdit):
 			# print(f'releasing: {KeySequenceEdit._hotkeys[self.op_keyword]}')
 			# kb.release(KeySequenceEdit._hotkeys[self.op_keyword])
 			# print(kb.is_pressed(KeySequenceEdit._hotkeys[self.op_keyword]))
-
+			print('sending end+shift+home+shift+home, ctrl+c')
 			kb.send('end+shift+home+shift+home, ctrl+c')
 			self.loop.run_until_complete(clipboard_changed())
 			clp = paste()
+			print('sending home+shift+end')
 			kb.send('home+shift+end')
 			is_indented = '\t' in clp or '    ' in clp
 			result = self._get_expression(clp, is_indented)
 			copy(result)
+			print('sending ctrl+v')
 			kb.send('ctrl+v')
 
 	def _get_expression(self, clp, is_indented):
