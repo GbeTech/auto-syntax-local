@@ -25,6 +25,7 @@ build_light\lib\PyQt5\Qt\translations\qtwebengine_locales\___am.pak
 build_light\lib\PyQt5\Qt\translations\___qt_hu.qm
 build_light\lib\PyQt5\Qt\translations\___qt_gl.qm
 build_light\lib\PyQt5\Qt\translations\___qt_fa.qm
+
 build_light\lib\PyQt5\Qt\resources\___qtwebengine_resources_200p.pak
 build_light\lib\PyQt5\Qt\resources\___qtwebengine_resources_100p.pak
 build_light\lib\PyQt5\Qt\resources\___qtwebengine_resources.pak
@@ -37,7 +38,6 @@ build_light\lib\PyQt5\Qt\qml\QtQuick\Controls\___qtquickcontrolsplugin.dll
 build_light\lib\PyQt5\Qt\plugins\sqldrivers\___qsqlite.dll
 build_light\lib\PyQt5\Qt\plugins\sceneparsers\___assimpsceneimport.dll
 build_light\platforms\___qwindows.dll
-build_light\lib\PyQt5\Qt\plugins\platforms\___qwindows.dll
 build_light\platforms\___qoffscreen.dll
 build_light\lib\PyQt5\Qt\plugins\platforms\___qoffscreen.dll
 build_light\platforms\___qminimal.dll
