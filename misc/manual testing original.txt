@@ -18,6 +18,8 @@ class InheritanceAndInitDefaults Super init name .moshe
 class MultipleInheritanceAndRType Super Hi init name str
     
 	def self_wasnt_wasnt_written_it_appeared_by_itself age int name .moshe
+def show name str .yosi
+def get_age int dob int 1900 earthyears .True args kwargs
 for self.collections
 for zip dict things
 for args
