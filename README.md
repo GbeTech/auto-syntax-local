@@ -40,8 +40,10 @@ python autosyntax.py
 
 
 
-## Known bugs & Limitations:
+## 🐞 Known bugs & Limitations:
 - Some AutoHotKey scripts interrupt `autosyntax`, especially if they reprogram `home` button.
+
+## ⏳ Future updates:
 
 ## Contributing
 
