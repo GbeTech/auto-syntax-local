@@ -33,9 +33,12 @@ python autosyntax.py
 - ' | str
 - print
 
+
 ### Examples:
 
 ![](https://i.imgur.com/ChKaw8P.gif)
+
+## Known bugs & Limitations:
 
 ## Contributing
 
