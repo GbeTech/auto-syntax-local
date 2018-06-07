@@ -6,12 +6,10 @@ An emmet-like app for python. Autosyntax converts english words to full python c
 
 ## Features
 
-- Reads keywords from the standard library, no learning needed
-- Platform agnostic; Works on all text editors and operating systems
-- Stupidly [easy to use](https://github.com/karan/joe#usage)
-- Supports all Github-supported [`.gitignore` files](https://github.com/karan/joe#list-all-available-files)
-- Works on Mac, Linux and (maybe) Windows
-- Supports other version control systems (`.hgignore`)
+- Keywords taken from the python standard library, so no learning needed
+- Platform agnostic; works on all text editors and operating systems
+- Handles contextual variables, built-in methods etc.
+- Configurable
 
 ## Installation
 
