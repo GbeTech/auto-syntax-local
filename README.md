@@ -22,10 +22,11 @@ python autosyntax.py
 ### Operators:
 
 ```
-[] | list       ![](https://i.imgur.com/4HkYVQN.gif)
+[] | list
 u | update      update all available gitignore files
 g | generate    generate gitignore files
 ```
+![](https://i.imgur.com/4HkYVQN.gif)
 
 ### Basic usage
 
