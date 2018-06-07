@@ -13,7 +13,8 @@ An emmet-like app for python. Autosyntax converts english words to full python c
 
 ## Installation
 
-After install, make sure to run `joe u`. This will download all `.gitignore` files in `~/joe-data/` folder.
+cd src
+python __init__.py
 
 ### Option 1: Binary
 
