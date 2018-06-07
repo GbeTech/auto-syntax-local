@@ -6,8 +6,8 @@ An emmet-like app for python. Autosyntax converts english words to full python c
 
 ## Features
 
-- Feed it keywords from the standard library
-- No installation necessary - just use the [binary](https://github.com/karan/joe#installation).
+- Reads keywords from the standard library, no learning needed
+- Platform agnostic; Works on all text editors and operating systems
 - Stupidly [easy to use](https://github.com/karan/joe#usage)
 - Supports all Github-supported [`.gitignore` files](https://github.com/karan/joe#list-all-available-files)
 - Works on Mac, Linux and (maybe) Windows
