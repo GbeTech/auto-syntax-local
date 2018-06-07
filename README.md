@@ -1,4 +1,4 @@
-![](http://i.imgur.com/y8g506n.png?1)
+![](http://www.autosyntax.io/static/common/favicon_orig_round_bg_894_894.png)
 
 # joe
 
@@ -126,10 +126,10 @@ This is a handy script that automates a lot of developing steps.
 
 ```bash
 USAGE:
-    $ $tool [-h|--help] COMMAND
+	$ $tool [-h|--help] COMMAND
 
   EXAMPLES:
-    $ $tool deps      Install dependencies for joe
-    $ $tool build     Build a binary
-    $ $tool run       Build and run the binary
+	$ $tool deps      Install dependencies for joe
+	$ $tool build     Build a binary
+	$ $tool run       Build and run the binary
 ```
