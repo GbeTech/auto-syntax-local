@@ -1,8 +1,8 @@
-# autosyntax
+# autosyntax >
 
 An emmet-like app for python. Autosyntax converts english words to fully syntaxed python code.
 
-![](https://i.imgur.com/8jMyFtI.gif)
+![](https://i.imgur.com/6CN2TVD.gif)
 
 ## Features
 
