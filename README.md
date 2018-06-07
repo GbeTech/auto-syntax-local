@@ -34,7 +34,7 @@ class
 ' | str
 print
 ```
-![](https://i.imgur.com/q8jkkIT.gif)
+![](https://i.imgur.com/ZZa3XGA.gif)
 
 ### Basic usage
 
