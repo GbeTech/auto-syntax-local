@@ -1,4 +1,4 @@
-![](http://www.autosyntax.io/static/common/favicon_orig_round_bg_894_894.png)
+![](http://www.autosyntax.io/static/common/favicon_round_bg_300_300.png)
 
 # joe
 
