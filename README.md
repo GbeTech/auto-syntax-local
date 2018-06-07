@@ -15,31 +15,14 @@ An emmet-like app for python. Autosyntax converts english words to full python c
 
 cd src
 
-python main.py
-
-### Option 1: Binary
-
-`joe` is available for OSX (macOS), Linux and Windows.
-
-Download the latest binary from the [Releases page](https://github.com/karan/joe/releases). It's the easiest way to get started with `joe`.
-
-Make sure to add the location of the binary to your `$PATH`.
-
-### Option 2: From source
-
-```bash
-$ git clone git@github.com:karan/joe.git
-$ cd joe/
-$ chmod +x tool.sh
-$ ./tool.sh build
-```
+python autosyntax.py
 
 ## Usage
 
-### Commands:
+### Operators:
 
 ```
-ls | list       list all available files
+[] | list       ![](https://i.imgur.com/4HkYVQN.gif)
 u | update      update all available gitignore files
 g | generate    generate gitignore files
 ```
