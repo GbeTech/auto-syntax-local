@@ -22,17 +22,17 @@ python autosyntax.py
 ### Operators:
 
 ```
-[] | list
-{} | dict
-() | tuple
-set
+- [] | list
+- {} | dict
+- () | tuple
+- set
 
-for
-def
-class
+- for
+- def
+- class
 
-' | str
-print
+- ' | str
+- print
 ```
 ![](https://i.imgur.com/ChKaw8P.gif)
 
