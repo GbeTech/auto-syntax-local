@@ -38,6 +38,8 @@ python autosyntax.py
 
 ![](https://i.imgur.com/ChKaw8P.gif)
 
+
+
 ## Known bugs & Limitations:
 
 ## Contributing
