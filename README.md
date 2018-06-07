@@ -21,7 +21,6 @@ python autosyntax.py
 
 ### Operators:
 
-```
 - [] | list
 - {} | dict
 - () | tuple
@@ -33,7 +32,6 @@ python autosyntax.py
 
 - ' | str
 - print
-```
 ![](https://i.imgur.com/ChKaw8P.gif)
 
 ## Contributing
