@@ -26,7 +26,7 @@ python autosyntax.py
 u | update      update all available gitignore files
 g | generate    generate gitignore files
 ```
-![](https://i.imgur.com/4HkYVQN.gif)
+![](https://i.imgur.com/q8jkkIT.gif)
 
 ### Basic usage
 
