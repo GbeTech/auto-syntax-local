@@ -4,20 +4,20 @@ An emmet-like app for python. Autosyntax converts english words to full python c
 
 ![](https://i.imgur.com/tWyMYtd.gif)
 
-## Features
+## ✔️ Features
 
 - Keywords taken from the python standard library, so no learning needed
 - Platform agnostic; works on all text editors and operating systems
 - Handles contextual variables, built-in methods etc.
 - Configurable
 
-## Installation
+## 💾 Installation
 
 cd src
 
 python autosyntax.py
 
-## Usage
+## 🔨 Usage
 
 ### Operators:
 
