@@ -1,12 +1,12 @@
 # autosyntax >
 
-An emmet-like app for python. Autosyntax converts english words to fully syntaxed python code.
+An emmet-like app for python. Autosyntax converts english words to full python code.
 
 ![](https://i.imgur.com/6CN2TVD.gif)
 
 ## Features
 
-- Written in uncomplicated Go (Golang)
+- Feed it keywords from the standard library
 - No installation necessary - just use the [binary](https://github.com/karan/joe#installation).
 - Stupidly [easy to use](https://github.com/karan/joe#usage)
 - Supports all Github-supported [`.gitignore` files](https://github.com/karan/joe#list-all-available-files)
