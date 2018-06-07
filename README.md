@@ -42,6 +42,7 @@ $ python autosyntax.py
 
 ## 🐞 Known bugs & Limitations:
 - Some AutoHotKey scripts interrupt `autosyntax`, especially if they reprogram `home` button.
+- When input is extraordinarily long, `autosyntax` may fail to convert it
 
 ## ⏳ Future updates:
 
