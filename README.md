@@ -23,8 +23,16 @@ python autosyntax.py
 
 ```
 [] | list
-u | update      update all available gitignore files
-g | generate    generate gitignore files
+{} | dict
+() | tuple
+set
+
+for
+def
+class
+
+' | str
+print
 ```
 ![](https://i.imgur.com/q8jkkIT.gif)
 
