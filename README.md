@@ -2,7 +2,7 @@
 
 An emmet-like app for python. Autosyntax converts english words to fully syntaxed python code.
 
-![](http://i.imgur.com/2tAksHG.gif)
+![](https://i.imgur.com/nHEqJf5.gif)
 
 ## Features
 
