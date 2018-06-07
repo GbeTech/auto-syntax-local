@@ -1,8 +1,6 @@
-![](http://www.autosyntax.io/static/common/github/title.png)
-
 # autosyntax
 
-A `.gitignore` magician in your command line. Joe generates `.gitignore` files from the command line for you.
+An emmet-like app for python. Autosyntax converts english words to fully syntaxed python code.
 
 ![](http://i.imgur.com/2tAksHG.gif)
 
