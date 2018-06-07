@@ -44,7 +44,9 @@ $ python autosyntax.py
 - Some AutoHotKey scripts interrupt `autosyntax`, especially if they reprogram `home` button.
 - When input is extraordinarily long, `autosyntax` may fail to convert it
 
-## ⏳ Future updates:
+## ⏳ In the near future:
+- GUI will be optional
+- User will choose which way they want to save the settings (.ini, hardcoded etc)
 
 ## Contributing
 
