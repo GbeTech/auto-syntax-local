@@ -1,6 +1,6 @@
 ![](http://www.autosyntax.io/static/common/preview_500_150.png)
 
-# joe
+# autosyntax
 
 A `.gitignore` magician in your command line. Joe generates `.gitignore` files from the command line for you.
 
