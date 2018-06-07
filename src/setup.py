@@ -13,7 +13,7 @@ buildOptions = dict(
 	)
 
 executables = [
-	Executable('__init__.py', base=base)
+	Executable('autosyntax.py', base=base)
 	]
 
 setup(name='Test',
