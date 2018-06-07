@@ -14,6 +14,7 @@ An emmet-like app for python. Autosyntax converts english words to full python c
 ## Installation
 
 cd src
+
 python __init__.py
 
 ### Option 1: Binary
