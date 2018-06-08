@@ -4,7 +4,7 @@ An emmet-like app for python. Autosyntax converts english words to full python c
 
 ![](https://i.imgur.com/tWyMYtd.gif)
 
-## ✔️ Features
+## ✔ Features
 
 - Keywords are taken from the python standard library, so no learning needed
 - Platform agnostic; works on all text editors and operating systems
@@ -46,7 +46,8 @@ $ python autosyntax.py
 
 ## ⏳ In the near future:
 - GUI will be optional
-- User will choose which way they want to save the settings (.ini, hardcoded etc)
+- JSON config files
+- Type Annotations can be configured to either adhere to [PEP 484](https://www.python.org/dev/peps/pep-0484/) or via docstring (old style)
 
 ## Buy me a coffee
 
