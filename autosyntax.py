@@ -23,21 +23,23 @@ def check_if_admin():
 		return False
 
 
+def launch_gui():
+	app = QApplication(sys.argv)
+	# noinspection PyArgumentList
+	MainWindow = QMainWindow()
+	ui = UI()
+	ui.setupUi(MainWindow)
+	MainWindow.show()
+	sys.exit(app.exec_())
+
+
 if __name__ == "__main__":
 	if check_if_admin():
-		if 'gui' in sys.argv:
-			app = QApplication(sys.argv)
-			# noinspection PyArgumentList
-			MainWindow = QMainWindow()
-
-			ui = UI()
-			ui.setupUi(MainWindow)
-
-			MainWindow.show()
-
-			sys.exit(app.exec_())
-		else:
-			print('no gui')
+		launch_gui()
+	# if 'gui' in sys.argv:
+	# 	launch_gui()
+	# else:
+	# 	print('no gui')
 
 	else:
 		ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, "", None, 1)

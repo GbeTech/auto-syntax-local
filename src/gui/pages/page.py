@@ -50,11 +50,13 @@ class Page(QWidget):
 		self.tabs = TabGroup(parent=self.groupbox,
 		                     geometry=(20, 30, 371, 301),
 		                     )
+		# noinspection PyArgumentList
 		self.tab_var_detection = QWidget()
 
 		self.tabs.addTab(self.tab_var_detection,
 		                 'tab_var_detection')
 
+		# noinspection PyArgumentList
 		self.tab_typings_detection = QWidget()
 		self.tabs.addTab(self.tab_typings_detection,
 		                 'tab_typings_detection',

@@ -52,6 +52,7 @@ class KeySequenceEdit(QKeySequenceEdit):
 			super().keyPressEvent(QKeyEvent)
 
 	# call setKeySequence with current KeySequence
+	# noinspection PyUnusedLocal
 	def _editingFinished(self, *args):
 		self.setKeySequence(self.keySequence().toString())
 

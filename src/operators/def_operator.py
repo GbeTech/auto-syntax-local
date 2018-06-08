@@ -1,9 +1,11 @@
 from typing import List
 
-from src.operators.Operators import Operator
-from . import (Atom, TypedAtom,
-               atom_factory, BUILTIN_FUNCTIONS, MAGIC_FUNCTIONS,
-               BUILTIN_TYPES, Indentation, ignore, surround_with)
+from src.operators import Operator
+from src.internals import (Atom, TypedAtom,
+                           atom_factory, BUILTIN_TYPES,
+                           MAGIC_FUNCTIONS,
+                           Indentation)
+from src.utils import ignore, surround_with
 
 
 # from internals.consts import BUILTIN_TYPES, MAGIC_FUNCTIONS

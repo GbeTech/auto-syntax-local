@@ -1,5 +1,9 @@
-from . import Atom,Operator,ignore
-# from operators.Operators import Operator
+from .atom import Atom
+from src.utils import ignore
+
+from src.operators import Operator
+
+
 # from utils.internals_utils import ignore
 
 

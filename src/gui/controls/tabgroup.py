@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QTabWidget
 from src.utils import boilerplate
 
 
+# noinspection PyUnusedLocal
 class TabGroup(QTabWidget):
 	def __init__(self, parent=None, *args, **kwargs):
 		super().__init__(parent)

@@ -16,7 +16,7 @@ def clipboard_changed():
 		new_clp = paste()
 		if new_clp != prev_clp or count >= 45:
 			break
-	print(f'\n\tpollefd {count} times until clpbrd change')
+	print(f'\n\tpolled {count} times until clpbrd change')
 	return count
 
 
@@ -39,7 +39,7 @@ def do_magic(op_keyword):
 
 
 def get_expression(clp, is_indented, op_keyword):
-	from internals.expression import Expression
+	from src.internals import Expression
 	line = Expression(clp, is_indented, op_keyword)
 	result = line.finalize()
 	return result

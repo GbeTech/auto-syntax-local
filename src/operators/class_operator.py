@@ -6,7 +6,9 @@ from typing import List
 # from utils.internals_utils import ignore
 
 # from . import DefOperator
-from . import Atom, Indentation, DefOperator, ignore
+from src.internals import Atom, Indentation
+from .def_operator import DefOperator
+from src.utils import ignore
 
 
 class ClassOperator(DefOperator, keyword='class'):

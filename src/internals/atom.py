@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from . import stringify_if_not_builtin_const_or_digit, stringify
+from src.utils import stringify_if_not_builtin_const_or_digit, stringify
 
 
 # from utils.internals_utils import stringify, stringify_if_not_builtin_const_or_digit

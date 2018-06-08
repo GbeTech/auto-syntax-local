@@ -55,6 +55,7 @@ def isUserAdmin():
 		return os.getuid() == 0
 
 
+# noinspection PyUnusedLocal,PyUnresolvedReferences
 def runAsAdmin(cmdLine=None, wait=True):
 	"""Attempt to relaunch the current script as an admin using the same
 	command line parameters.  Pass cmdLine in to override and set a new
@@ -118,6 +119,7 @@ def runAsAdmin(cmdLine=None, wait=True):
 	return rc
 
 
+# noinspection PyUnusedLocal
 def test():
 	"""A simple test function; check if we're admin, and if not relaunch
 	the script as admin."""
