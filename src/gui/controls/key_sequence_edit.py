@@ -6,7 +6,7 @@ from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWidgets import QKeySequenceEdit, QWidget
 from pyperclip import copy, paste
 
-from expression import Expression
+from internals.expression import Expression
 from gui.utils import boilerplate
 from utils import clipboard_changed, ignore
 

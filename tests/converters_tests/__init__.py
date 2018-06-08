@@ -1,4 +1,4 @@
-from expression import Expression
+from internals.expression import Expression
 
 
 def get_expression(clp, keyword=None):
