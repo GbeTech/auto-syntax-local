@@ -3,6 +3,8 @@ import asyncio
 
 from pyperclip import paste, copy
 
+loop = asyncio.get_event_loop()
+
 
 @asyncio.coroutine
 def clipboard_changed():
@@ -22,7 +24,7 @@ def clipboard_changed():
 # 	kb.add_hotkey(hotkey,  # FASTER W/O TOR AND SUPP
 # 	              callback=lambda: kb.release(hotkey) or fn(loop))
 
-def _do_magic(loop):
+def do_magic(op_keyword):
 	print('sending end+shift+home+shift+home, ctrl+c')
 	kb.send('end+shift+home+shift+home, ctrl+c')
 	loop.run_until_complete(clipboard_changed())
@@ -30,12 +32,14 @@ def _do_magic(loop):
 	print('sending home+shift+end')
 	kb.send('home+shift+end')
 	is_indented = '\t' in clp or '    ' in clp
-	result = _get_expression(clp, is_indented)
+	result = get_expression(clp, is_indented, op_keyword)
 	copy(result)
 	print('sending ctrl+v')
 	kb.send('ctrl+v')
 
-def _get_expression(clp, is_indented):
-	line = Expression(clp, is_indented, self.op_keyword)
+
+def get_expression(clp, is_indented, op_keyword):
+	from internals.expression import Expression
+	line = Expression(clp, is_indented, op_keyword)
 	result = line.finalize()
 	return result
