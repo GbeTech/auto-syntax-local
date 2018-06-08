@@ -8,6 +8,8 @@ from pyperclip import copy, paste
 
 from internals.expression import Expression
 from gui.utils import boilerplate
+# from utils.kb_utils import clipboard_changed
+# from utils.internals_utils import ignore
 from utils import clipboard_changed, ignore
 
 
@@ -24,6 +26,7 @@ class KeySequenceEdit(QKeySequenceEdit):
 		super().__init__(*args)
 		boilerplate(self, **kwargs)
 		self.op_keyword = kwargs['op_keyword']
+		# init_event_loop()
 		self.loop = asyncio.get_event_loop()
 
 		# checkmark
@@ -85,9 +88,9 @@ class KeySequenceEdit(QKeySequenceEdit):
 		KeySequenceEdit._hotkeys[self.op_keyword] = hotkey
 		print(f'registering: {hotkey}')
 		# keybinder.register_hotkey(self._win_id,
-		#                           hotkey, self._ready_expression)
+		#                           hotkey, self._do_magic)
 
-		kb.add_hotkey(hotkey=hotkey, callback=self._ready_expression,
+		kb.add_hotkey(hotkey=hotkey, callback=self._do_magic,
 		              suppress=True, trigger_on_release=True)
 
 	def _remove_current_keyboard_hotkey(self):
@@ -99,7 +102,7 @@ class KeySequenceEdit(QKeySequenceEdit):
 
 			kb.remove_hotkey(KeySequenceEdit._hotkeys[self.op_keyword])
 
-	def _ready_expression(self):
+	def _do_magic(self):
 		if not KeySequenceEdit._gui_focused:
 			# print(f'releasing: {KeySequenceEdit._hotkeys[self.op_keyword]}')
 			# kb.release(KeySequenceEdit._hotkeys[self.op_keyword])

@@ -78,14 +78,14 @@ class KeySequenceEdit(QKeySequenceEdit):
 		self._remove_current_keyboard_hotkey()
 		
 		KeySequenceEdit._hotkeys[self.op_keyword] = hotkey
-		kb.add_hotkey(hotkey=hotkey, callback=self._ready_expression, suppress=True)
+		kb.add_hotkey(hotkey=hotkey, callback=self._do_magic, suppress=True)
 	
 	def _remove_current_keyboard_hotkey(self):
 		# remove current operator's keyboard hotkey
 		with ignore(KeyError):
 			kb.remove_hotkey(KeySequenceEdit._hotkeys[self.op_keyword])
 	
-	def _ready_expression(self):
+	def _do_magic(self):
 		if not KeySequenceEdit._gui_focused:
 			kb.send('home+home+shift+end, ctrl+c')
 			self.general_loop.run_until_complete(clipboard_changed())

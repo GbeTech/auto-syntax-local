@@ -3,7 +3,7 @@ from typing import List
 from internals.atom import Atom
 from internals.indentation import Indentation
 from operators.def_operator import DefOperator
-from utils import ignore
+from utils.internals_utils import ignore
 
 
 class ClassOperator(DefOperator, keyword='class'):

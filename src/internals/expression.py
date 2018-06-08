@@ -1,6 +1,6 @@
 from internals.atom import Atom
 from operators.Operators import Operator
-from utils import ignore
+from utils.internals_utils import ignore
 
 
 # noinspection PyUnresolvedReferences,PyAttributeOutsideInit
