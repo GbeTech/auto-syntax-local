@@ -20,13 +20,10 @@ class KeySequenceEdit(QKeySequenceEdit):
 	_hotkeys = {}
 	_gui_focused = False
 
-	# _win_id = None
-
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args)
 		boilerplate(self, **kwargs)
 		self.op_keyword = kwargs['op_keyword']
-		# init_event_loop()
 		# self.loop = asyncio.get_event_loop()
 
 		# checkmark
@@ -87,9 +84,6 @@ class KeySequenceEdit(QKeySequenceEdit):
 		self._remove_current_keyboard_hotkey()
 		KeySequenceEdit._hotkeys[self.op_keyword] = hotkey
 		print(f'registering: {hotkey}')
-		# keybinder.register_hotkey(self._win_id,
-		#                           hotkey, self._do_magic)
-
 		kb.add_hotkey(hotkey=hotkey, callback=self._do_magic,
 		              suppress=True, trigger_on_release=True)
 
@@ -97,9 +91,6 @@ class KeySequenceEdit(QKeySequenceEdit):
 		# remove current operator's keyboard hotkey
 		with ignore(KeyError):
 			print(f'unregistering: {KeySequenceEdit._hotkeys[self.op_keyword]}')
-			# keybinder.unregister_hotkey(self._win_id,
-			#                             KeySequenceEdit._hotkeys[self.op_keyword])
-
 			kb.remove_hotkey(KeySequenceEdit._hotkeys[self.op_keyword])
 
 	def _do_magic(self):
