@@ -4,7 +4,7 @@ from internals.atom import Atom, TypedAtom, atom_factory
 from internals.consts import BUILTIN_TYPES, MAGIC_FUNCTIONS
 from internals.indentation import Indentation
 from operators.Operators import Operator
-from utils import ignore, surround_with
+from utils.internals_utils import ignore, surround_with
 
 
 class DefOperator(Operator, keyword='def'):

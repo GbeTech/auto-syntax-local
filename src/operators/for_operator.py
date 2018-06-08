@@ -1,5 +1,5 @@
 from operators.Operators import Operator
-from utils import get_singular
+from utils.internals_utils import get_singular
 
 
 class ForOperator(Operator, keyword='for'):
