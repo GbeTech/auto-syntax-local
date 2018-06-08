@@ -1,7 +1,7 @@
 from typing import List
 
-from atom import Atom
-from indentation import Indentation
+from internals.atom import Atom
+from internals.indentation import Indentation
 from operators.def_operator import DefOperator
 from utils import ignore
 

@@ -1,8 +1,8 @@
 from typing import List
 
-from atom import Atom, TypedAtom, atom_factory
-from consts import BUILTIN_TYPES, MAGIC_FUNCTIONS
-from indentation import Indentation
+from internals.atom import Atom, TypedAtom, atom_factory
+from internals.consts import BUILTIN_TYPES, MAGIC_FUNCTIONS
+from internals.indentation import Indentation
 from operators.Operators import Operator
 from utils import ignore, surround_with
 

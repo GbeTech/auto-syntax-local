@@ -1,6 +1,6 @@
 import pytest
 
-from consts import MAGIC_FUNCTIONS
+from internals.consts import MAGIC_FUNCTIONS
 from . import get_expression
 
 tri_quote = '"""'

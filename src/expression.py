@@ -1,4 +1,4 @@
-from atom import Atom
+from internals.atom import Atom
 from operators.Operators import Operator
 from utils import ignore
 
