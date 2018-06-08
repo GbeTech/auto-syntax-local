@@ -9,39 +9,27 @@ CONFIG_FILENAME = 'config.ini'
 CONFIG_FILENAME_PATH = os.path.join(CONFIG_DIRNAME, CONFIG_FILENAME)
 
 
-def load_config_ini():
+def _load_config_ini():
 	try:
-		with open(CONFIG_FILENAME_PATH, 'r') as f:
-			_json = json.load(f)
-		return _json
-	except FileNotFoundError:
+		ini = configparser.ConfigParser()
+		ini.read(CONFIG_FILENAME_PATH)
+		return ini
+	except FileNotFoundError as e:
 		raise FileNotFoundError('\n'.join([f'configuration file not found.',
 		                                   f'CONFIG_DIRNAME: {CONFIG_DIRNAME}',
 		                                   f'CONFIG_FILENAME: {CONFIG_FILENAME}',
 		                                   f'CONFIG_FILENAME_PATH: {CONFIG_FILENAME_PATH}',
 		                                   f'getcwd: {os.getcwd()}',
-		                                   f'listdir: {os.listdir()}']))
+		                                   f'listdir: {os.listdir()}',
+		                                   f'original error: {e}']))
+
+
+class Hotkeys:
+	def __init__(self, hotkeys: dict):
+		self.global_hotkey = hotkeys['global_hotkey']
 
 
 class Config:
-	ini = configparser.ConfigParser()
-	ini.read(CONFIG_FILENAME_PATH)
-	global_hotkey = ini['Hotkeys']['global_hotkey']
-#
-#
-
-#
-#
-# class Hotkeys:
-# 	def __init__(self, hotkeys: dict):
-# 		self.global_hotkey = hotkeys['global_hotkey']
-#
-#
-# class Config:
-# 	_json = load_config_json()
-# 	hotkeys = Hotkeys(_json['hotkeys'])
-#
-# 	@staticmethod
-# 	def set_global_hotkey(hotkey):
-# 		with open(CONFIG_FILENAME_PATH, 'r+') as f:
-# 			json.dump(dict(Config._json), hotkey)
+	_ini = _load_config_ini()
+	hotkeys = Hotkeys(_ini['Hotkeys'])
+# global_hotkey = _ini['Hotkeys']['global_hotkey']
