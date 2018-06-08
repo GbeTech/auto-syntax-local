@@ -1,4 +1,4 @@
-from src.operators.Operators import Operator
+from src.operators import Operator
 
 
 class DictOperator(Operator, keyword='dict'):

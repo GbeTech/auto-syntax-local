@@ -4,9 +4,6 @@ from src.utils import ignore
 from src.operators import Operator
 
 
-# from utils.internals_utils import ignore
-
-
 # noinspection PyUnresolvedReferences,PyAttributeOutsideInit
 class Expression:
 
@@ -23,8 +20,9 @@ class Expression:
 		self.set_operator_and_items(op_keyword)
 		with ignore(AttributeError):
 			self.operator.set_is_within_class(is_indented)
-		if self.l_side is not None and not self.operator.assignment_possible:
-			return
+		if self.l_side is not None:
+			if not self.operator.assignment_possible:
+				return
 		self.operator.construct_atoms(self.items_raw)
 		self.r_side = self.operator.handle_atoms()
 

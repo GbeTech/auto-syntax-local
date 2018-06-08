@@ -1,14 +1,13 @@
 from typing import List
 
-# from internals.atom import Atom
-# from internals.indentation import Indentation
-# from operators.def_operator import DefOperator
-# from utils.internals_utils import ignore
-
-# from . import DefOperator
 from src.internals import Atom, Indentation
-from .def_operator import DefOperator
 from src.utils import ignore
+
+from .def_operator import DefOperator  # works
+
+
+# from . import DefOperator  # doesn't work
+# from src.operators import DefOperator  # doesn't work
 
 
 class ClassOperator(DefOperator, keyword='class'):
