@@ -88,7 +88,8 @@ class KeySequenceEdit(QKeySequenceEdit):
 		self._remove_current_keyboard_hotkey()
 		KeySequenceEdit._hotkeys[self.op_keyword] = hotkey
 		print(f'registering: {hotkey}')
-		kb.add_hotkey(hotkey=hotkey, callback=self._do_magic,
+		kb.add_hotkey(hotkey=hotkey,
+		              callback=self._do_magic,
 		              suppress=True, trigger_on_release=True)
 
 	def _remove_current_keyboard_hotkey(self):

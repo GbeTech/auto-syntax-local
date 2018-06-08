@@ -32,4 +32,3 @@ class Hotkeys:
 class Config:
 	_ini = _load_config_ini()
 	hotkeys = Hotkeys(_ini['Hotkeys'])
-# global_hotkey = _ini['Hotkeys']['global_hotkey']

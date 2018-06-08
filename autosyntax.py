@@ -3,6 +3,7 @@ import ctypes
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
 from src import UI
+import sys
 
 """class WinEventFilter(QAbstractNativeEventFilter):
 	def __init__(self, keybinder):
@@ -23,24 +24,20 @@ def check_if_admin():
 
 
 if __name__ == "__main__":
-	import sys
-
 	if check_if_admin():
-		app = QApplication(sys.argv)
-		# noinspection PyArgumentList
-		MainWindow = QMainWindow()
-		"""# keybinder
-		keybinder.init()
-		win_event_filter = WinEventFilter(keybinder)
-		event_dispatcher = QAbstractEventDispatcher.instance()
-		event_dispatcher.installNativeEventFilter(win_event_filter)"""
+		if 'gui' in sys.argv:
+			app = QApplication(sys.argv)
+			# noinspection PyArgumentList
+			MainWindow = QMainWindow()
 
-		ui = UI()
-		ui.setupUi(MainWindow)
+			ui = UI()
+			ui.setupUi(MainWindow)
 
-		MainWindow.show()
+			MainWindow.show()
 
-		sys.exit(app.exec_())
+			sys.exit(app.exec_())
+		else:
+			print('no gui')
 
 	else:
 		ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, "", None, 1)
