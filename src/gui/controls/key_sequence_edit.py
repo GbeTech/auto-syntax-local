@@ -14,6 +14,7 @@ from utils import clipboard_changed, ignore
 
 
 # from pyqtkeybind import keybinder
+from utils.kb_utils import _do_magic
 
 
 class KeySequenceEdit(QKeySequenceEdit):
@@ -104,20 +105,22 @@ class KeySequenceEdit(QKeySequenceEdit):
 
 	def _do_magic(self):
 		if not KeySequenceEdit._gui_focused:
+			_do_magic(self.loop,)
 			# print(f'releasing: {KeySequenceEdit._hotkeys[self.op_keyword]}')
 			# kb.release(KeySequenceEdit._hotkeys[self.op_keyword])
 			# print(kb.is_pressed(KeySequenceEdit._hotkeys[self.op_keyword]))
-			print('sending end+shift+home+shift+home, ctrl+c')
-			kb.send('end+shift+home+shift+home, ctrl+c')
-			self.loop.run_until_complete(clipboard_changed())
-			clp = paste()
-			print('sending home+shift+end')
-			kb.send('home+shift+end')
-			is_indented = '\t' in clp or '    ' in clp
-			result = self._get_expression(clp, is_indented)
-			copy(result)
-			print('sending ctrl+v')
-			kb.send('ctrl+v')
+
+			# print('sending end+shift+home+shift+home, ctrl+c')
+			# kb.send('end+shift+home+shift+home, ctrl+c')
+			# self.loop.run_until_complete(clipboard_changed())
+			# clp = paste()
+			# print('sending home+shift+end')
+			# kb.send('home+shift+end')
+			# is_indented = '\t' in clp or '    ' in clp
+			# result = self._get_expression(clp, is_indented)
+			# copy(result)
+			# print('sending ctrl+v')
+			# kb.send('ctrl+v')
 
 	def _get_expression(self, clp, is_indented):
 		line = Expression(clp, is_indented, self.op_keyword)
