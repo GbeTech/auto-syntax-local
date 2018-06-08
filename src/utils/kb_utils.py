@@ -14,7 +14,7 @@ def clipboard_changed():
 		new_clp = paste()
 		if new_clp != prev_clp or count >= 45:
 			break
-	print(f'\n\tpolled {count} times until clpbrd change')
+	print(f'\n\tpollefd {count} times until clpbrd change')
 	return count
 
 # def add_hotkey(*, hotkey, fn, loop):
