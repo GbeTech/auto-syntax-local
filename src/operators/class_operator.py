@@ -1,9 +1,12 @@
 from typing import List
 
-from internals.atom import Atom
-from internals.indentation import Indentation
-from operators.def_operator import DefOperator
-from utils.internals_utils import ignore
+# from internals.atom import Atom
+# from internals.indentation import Indentation
+# from operators.def_operator import DefOperator
+# from utils.internals_utils import ignore
+
+# from . import DefOperator
+from . import Atom, Indentation, DefOperator, ignore
 
 
 class ClassOperator(DefOperator, keyword='class'):
@@ -14,7 +17,7 @@ class ClassOperator(DefOperator, keyword='class'):
 		self.init_operator = DefOperator()
 		self.init_indented: Indentation
 		self.assignment_possible = False
-	
+
 	@staticmethod
 	def _create_super(indentation):
 		# init_args = [atom.subject for atom in self.init_operator.atoms]
@@ -25,7 +28,7 @@ class ClassOperator(DefOperator, keyword='class'):
 		# self._close_line_w_parenthesis(super_indentation, line_idx=-1, colon=False)
 		super_indentation.close_line_w_parenthesis(line_idx=-1, colon=False)
 		return indentation
-	
+
 	def _handle_multiple_atoms(self):
 		indentation = Indentation(f'class {self.name.subject}')
 		self._set_inheritance_signature(indentation)
@@ -34,24 +37,24 @@ class ClassOperator(DefOperator, keyword='class'):
 			if self.inheritances:
 				indentation = self._create_super(indentation)
 		return indentation
-	
+
 	def _set_inheritance_signature(self, indentation):
 		if self.inheritances:
 			indentation.add_word_to_last_line('(')
 			for supercls in self.inheritances:
 				indentation.add_word_to_last_line([supercls, ', '])
-			
+
 			indentation.close_line_w_parenthesis(colon=False)
 		indentation.add_word_to_last_line(':')
-	
+
 	def _set_inheritances(self, items_raw):
 		with ignore(IndexError):
 			while items_raw[0] != 'init':
 				self.inheritances.append(items_raw[0])
 				items_raw = items_raw[1:]
-		
+
 		return items_raw
-	
+
 	def _set_init_method(self, items_raw):
 		with ignore(IndexError):
 			if items_raw[0] == 'init':
@@ -59,18 +62,18 @@ class ClassOperator(DefOperator, keyword='class'):
 				self.init_operator.construct_atoms(items_raw)
 				self.init_indented = self.init_operator._handle_multiple_atoms()
 		return items_raw
-	
+
 	def construct_atoms(self, items_raw):
 		items_raw = super()._set_untyped_name(items_raw)
 		items_raw = self._set_inheritances(items_raw)
 		self._set_init_method(items_raw)
-	
+
 	# noinspection PyMethodOverriding
 	# @staticmethod
 	# def _convert(indentation):
 	# 	r_side = indentation.convert()
 	# 	return r_side
-	
+
 	"""def _convert(self):
 		indentation_lvls = [[f'class {self.name}']]
 		if self.inheritances:

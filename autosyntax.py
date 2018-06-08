@@ -2,7 +2,7 @@ import ctypes
 
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
-from gui.UI import UI
+from src import UI
 
 """class WinEventFilter(QAbstractNativeEventFilter):
 	def __init__(self, keybinder):

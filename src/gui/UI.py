@@ -1,8 +1,9 @@
 from PyQt5 import QtCore
 from PyQt5.QtCore import QObject, pyqtSignal
 
-from gui.controls import KeySequenceEdit, TabGroup
-from gui.pages import *
+# from gui.controls import KeySequenceEdit, TabGroup
+from .pages import *
+from .controls import KeySequenceEdit, TabGroup
 
 
 # noinspection PyArgumentList

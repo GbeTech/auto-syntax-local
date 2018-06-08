@@ -1,12 +1,12 @@
 from PyQt5.QtWidgets import QWidget
 
-from gui.controls.groupbox import GroupBox
-from gui.controls.key_sequence_edit import KeySequenceEdit
-from gui.controls.label import Label
-from gui.controls.tabgroup import TabGroup
+# from . import KeySequenceEdit, Label, TabGroup, GroupBox
 
 
 # noinspection PyArgumentList
+from src.gui.controls import Label, KeySequenceEdit, GroupBox, TabGroup
+
+
 class Page(QWidget):
 
 	def __init__(self, hotkey_label_text=None, op_keyword=None, *args, **kwargs):

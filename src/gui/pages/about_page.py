@@ -1,4 +1,5 @@
-from gui.pages.page import Page
+# from gui.pages.page import Page
+from .page import Page
 
 
 class AboutPage(Page):

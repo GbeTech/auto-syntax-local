@@ -1,19 +1,23 @@
-import asyncio
+# import asyncio
 
 import keyboard as kb
 from PyQt5.QtCore import QRect, Qt
 from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWidgets import QKeySequenceEdit, QWidget
-from pyperclip import copy, paste
 
-from internals.expression import Expression
-from gui.utils import boilerplate
+# from pyperclip import copy, paste
+
+# from . import Expression
+# from . import boilerplate, ignore, do_magic
+
+
 # from utils.kb_utils import clipboard_changed
 # from utils.internals_utils import ignore
-from utils import clipboard_changed, ignore
+# from utils import
 
 # from pyqtkeybind import keybinder
-from utils.kb_utils import do_magic
+# from utils.kb_utils import do_magic
+from src.utils import boilerplate, ignore, do_magic
 
 
 class KeySequenceEdit(QKeySequenceEdit):
@@ -113,10 +117,11 @@ class KeySequenceEdit(QKeySequenceEdit):
 	# print('sending ctrl+v')
 	# kb.send('ctrl+v')
 
-	def _get_expression(self, clp, is_indented):
-		line = Expression(clp, is_indented, self.op_keyword)
-		result = line.finalize()
-		return result
+	# NOW IN kb_utils
+	# def _get_expression(self, clp, is_indented):
+	# 	line = Expression(clp, is_indented, self.op_keyword)
+	# 	result = line.finalize()
+	# 	return result
 
 	"""def _is_indented_old(self, stop_recursion):
 		kb.send('shift+home, ctrl+c')

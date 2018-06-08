@@ -1,7 +1,7 @@
-from internals.atom import Atom
-from internals.consts import BUILTIN_FUNCTIONS
+from . import Atom,BUILTIN_FUNCTIONS,xnor
+# from internals.consts import BUILTIN_FUNCTIONS
 
-from utils.internals_utils import xnor
+# from utils.internals_utils import xnor
 
 WRAPPERS = {
 	'list':  ('[', ']'),

@@ -1,4 +1,6 @@
-from internals.expression import Expression
+# from src.internals.expression import Expression
+# autosyntax\tests\converters_tests\__init__.py
+from src.internals import Expression
 
 
 def get_expression(clp, keyword=None):

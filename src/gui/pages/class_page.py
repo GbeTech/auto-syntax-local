@@ -1,4 +1,4 @@
-from gui.pages.page import Page
+from .page import Page
 
 
 class ClassPage(Page):
