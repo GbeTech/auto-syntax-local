@@ -1,5 +1,5 @@
-from atom import Atom
-from consts import BUILTIN_FUNCTIONS
+from internals.atom import Atom
+from internals.consts import BUILTIN_FUNCTIONS
 
 from utils import xnor
 
