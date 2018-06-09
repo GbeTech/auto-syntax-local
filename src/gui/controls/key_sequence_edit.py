@@ -1,6 +1,6 @@
 # import asyncio
 
-import keyboard as kb
+# import keyboard as kb
 from PyQt5.QtCore import QRect, Qt
 from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWidgets import QKeySequenceEdit, QWidget
@@ -17,7 +17,7 @@ from PyQt5.QtWidgets import QKeySequenceEdit, QWidget
 
 # from pyqtkeybind import keybinder
 # from utils.kb_utils import do_magic
-from src.utils import boilerplate, ignore, do_magic, log
+from src.utils import boilerplate, ignore, do_magic, log, add_hotkey, remove_hotkey
 
 
 class KeySequenceEdit(QKeySequenceEdit):
@@ -36,9 +36,33 @@ class KeySequenceEdit(QKeySequenceEdit):
 		# noinspection PyUnresolvedReferences
 		super().editingFinished.connect(self._editingFinished)
 
-		self._is_not_empty()
+		self._set_hk_ifnot_empty()
+
+	@log()
+	def _set_hk_ifnot_empty(self):
+		if not self.keySequence().isEmpty():
+			self._set_keyboard_hotkey(self.keySequence().toString())
+			self._toggle_checkmark(True)
+		else:
+			self._toggle_checkmark(False)
+
+	@log()
+	def setKeySequence(self, key_seq: str, **kwargs):
+		super().setKeySequence(QKeySequence().fromString(key_seq))
+		self._set_hk_ifnot_empty()
+
+	@log()
+	def _set_keyboard_hotkey(self, hotkey):
+		self._remove_current_keyboard_hotkey()
+		KeySequenceEdit._hotkeys[self.op_keyword] = hotkey
+		print(f'registering: {hotkey}')
+
+		add_hotkey(hotkey=hotkey,
+		           callback=self._do_magic,
+		           suppress=True, trigger_on_release=True)
 
 	@staticmethod
+	@log()
 	def set_gui_has_focus(value):
 		KeySequenceEdit._gui_focused = value
 
@@ -58,37 +82,14 @@ class KeySequenceEdit(QKeySequenceEdit):
 	def _editingFinished(self, *args):
 		self.setKeySequence(self.keySequence().toString())
 
-	# call _validate
-	@log()
-	def setKeySequence(self, key_seq: str, **kwargs):
-		super().setKeySequence(QKeySequence().fromString(key_seq))
-		self._is_not_empty()
-
-	@log(print_doc=True)
-	def _is_not_empty(self):
-		"""if not empty, set kb hotkey and checkmark=True. else checkmark=False"""
-		if not self.keySequence().isEmpty():
-			self._set_keyboard_hotkey(self.keySequence().toString())
-			self._toggle_checkmark(True)
-		else:
-			self._toggle_checkmark(False)
-
 	# keyboard
-	@log()
-	def _set_keyboard_hotkey(self, hotkey):
-		self._remove_current_keyboard_hotkey()
-		KeySequenceEdit._hotkeys[self.op_keyword] = hotkey
-		print(f'registering: {hotkey}')
-		kb.add_hotkey(hotkey=hotkey,
-		              callback=self._do_magic,
-		              suppress=True, trigger_on_release=True)
 
 	@log()
 	def _remove_current_keyboard_hotkey(self):
 		# remove current operator's keyboard hotkey
 		with ignore(KeyError):
 			print(f'unregistering: {KeySequenceEdit._hotkeys[self.op_keyword]}')
-			kb.remove_hotkey(KeySequenceEdit._hotkeys[self.op_keyword])
+			remove_hotkey(KeySequenceEdit._hotkeys[self.op_keyword])
 
 	@log()
 	def _do_magic(self):

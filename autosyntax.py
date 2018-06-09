@@ -33,6 +33,8 @@ def launch_gui():
 	sys.exit(app.exec_())
 
 
+# def launch():
+
 if __name__ == "__main__":
 	if check_if_admin():
 		launch_gui()

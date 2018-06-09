@@ -53,9 +53,9 @@ import types
 
 
 def log(print_doc=False):
-	def mezzanine(func: types.MethodType):
+	def real_decorator(func: types.MethodType):
 		def wrapper(*args, **kwargs):
-			print(f'logging {func.__qualname__}')
+			print(f'{func.__qualname__}')
 			if print_doc:
 				doc = func.__doc__
 				if doc is not None:
@@ -65,7 +65,7 @@ def log(print_doc=False):
 
 		return wrapper
 
-	return mezzanine
+	return real_decorator
 
 
 def class_logger(cls):
