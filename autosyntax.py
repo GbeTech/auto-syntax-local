@@ -59,10 +59,10 @@ if __name__ == "__main__":
 			elif argv[1] == '--config':
 				screens.config.main()
 			else:
-				screens.config.main()
+				screens.help.main()
 		# screens.help.main()
 		except IndexError:
-			screens.config.main()
-		# screens.help.main()
+			screens.help.main()
+	# screens.help.main()
 	else:
 		ctypes.windll.shell32.ShellExecuteW(None, "runas", executable, "", None, 1)
