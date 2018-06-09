@@ -3,13 +3,7 @@ from typing import List
 from src.internals import Atom, Indentation
 from src.utils import ignore
 
-# from .def_operator import DefOperator  # works
-
-
-from . import DefOperator  # doesn't work
-
-
-# from src.operators import DefOperator  # doesn't work
+from . import DefOperator
 
 
 class ClassOperator(DefOperator, keyword='class'):

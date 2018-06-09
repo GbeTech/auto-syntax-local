@@ -17,18 +17,18 @@ from PyQt5.QtWidgets import QKeySequenceEdit, QWidget
 
 # from pyqtkeybind import keybinder
 # from utils.kb_utils import do_magic
-from src.utils import boilerplate, ignore, do_magic
+from src.utils import boilerplate, ignore, do_magic, log
 
 
 class KeySequenceEdit(QKeySequenceEdit):
 	_hotkeys = {}
 	_gui_focused = False
 
+	@log()
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args)
 		boilerplate(self, **kwargs)
 		self.op_keyword = kwargs['op_keyword']
-		# self.loop = asyncio.get_event_loop()
 
 		# checkmark
 		self._checkmark = self._init_checkmark()
@@ -36,13 +36,14 @@ class KeySequenceEdit(QKeySequenceEdit):
 		# noinspection PyUnresolvedReferences
 		super().editingFinished.connect(self._editingFinished)
 
-		self._validate_key_sequence()
+		self._is_not_empty()
 
 	@staticmethod
 	def set_gui_has_focus(value):
 		KeySequenceEdit._gui_focused = value
 
 	# Escape to clear
+	@log()
 	def keyPressEvent(self, QKeyEvent):
 		if QKeyEvent.key() == Qt.Key_Escape:
 			self.clear()
@@ -53,21 +54,47 @@ class KeySequenceEdit(QKeySequenceEdit):
 
 	# call setKeySequence with current KeySequence
 	# noinspection PyUnusedLocal
+	@log()
 	def _editingFinished(self, *args):
 		self.setKeySequence(self.keySequence().toString())
 
 	# call _validate
+	@log()
 	def setKeySequence(self, key_seq: str, **kwargs):
 		super().setKeySequence(QKeySequence().fromString(key_seq))
-		self._validate_key_sequence()
+		self._is_not_empty()
 
-	def _validate_key_sequence(self):
-		# todo: if not collide with others..
+	@log(print_doc=True)
+	def _is_not_empty(self):
+		"""if not empty, set kb hotkey and checkmark=True. else checkmark=False"""
 		if not self.keySequence().isEmpty():
 			self._set_keyboard_hotkey(self.keySequence().toString())
 			self._toggle_checkmark(True)
 		else:
 			self._toggle_checkmark(False)
+
+	# keyboard
+	@log()
+	def _set_keyboard_hotkey(self, hotkey):
+		self._remove_current_keyboard_hotkey()
+		KeySequenceEdit._hotkeys[self.op_keyword] = hotkey
+		print(f'registering: {hotkey}')
+		kb.add_hotkey(hotkey=hotkey,
+		              callback=self._do_magic,
+		              suppress=True, trigger_on_release=True)
+
+	@log()
+	def _remove_current_keyboard_hotkey(self):
+		# remove current operator's keyboard hotkey
+		with ignore(KeyError):
+			print(f'unregistering: {KeySequenceEdit._hotkeys[self.op_keyword]}')
+			kb.remove_hotkey(KeySequenceEdit._hotkeys[self.op_keyword])
+
+	@log()
+	def _do_magic(self):
+		if not KeySequenceEdit._gui_focused:
+			print(f'self.op_keyword: ', self.op_keyword)
+			do_magic(self.op_keyword)
 
 	def _init_checkmark(self):
 		# noinspection PyArgumentList
@@ -83,25 +110,6 @@ class KeySequenceEdit(QKeySequenceEdit):
 		# self._checkmark.setStyleSheet(bg('redsmall25'))
 		else:
 			self._checkmark.setStyleSheet(bg('redsmall25'))
-
-	# keyboard
-	def _set_keyboard_hotkey(self, hotkey):
-		self._remove_current_keyboard_hotkey()
-		KeySequenceEdit._hotkeys[self.op_keyword] = hotkey
-		print(f'registering: {hotkey}')
-		kb.add_hotkey(hotkey=hotkey,
-		              callback=self._do_magic,
-		              suppress=True, trigger_on_release=True)
-
-	def _remove_current_keyboard_hotkey(self):
-		# remove current operator's keyboard hotkey
-		with ignore(KeyError):
-			print(f'unregistering: {KeySequenceEdit._hotkeys[self.op_keyword]}')
-			kb.remove_hotkey(KeySequenceEdit._hotkeys[self.op_keyword])
-
-	def _do_magic(self):
-		if not KeySequenceEdit._gui_focused:
-			do_magic(self.op_keyword)
 
 	# print(f'releasing: {KeySequenceEdit._hotkeys[self.op_keyword]}')
 	# kb.release(KeySequenceEdit._hotkeys[self.op_keyword])

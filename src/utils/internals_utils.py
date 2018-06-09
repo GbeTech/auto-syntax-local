@@ -47,3 +47,39 @@ def surround_with(surround, to_surround):
 
 def xnor(a, b):
 	return not a ^ b
+
+
+import types
+
+
+def log(print_doc=False):
+	def mezzanine(func: types.MethodType):
+		def wrapper(*args, **kwargs):
+			print(f'logging {func.__qualname__}')
+			if print_doc:
+				doc = func.__doc__
+				if doc is not None:
+					print(f'\tdoc: {doc}\n')
+
+			func(*args, **kwargs)
+
+		return wrapper
+
+	return mezzanine
+
+
+def class_logger(cls):
+	class Wrapper:
+
+		def __init__(self, *args, **kwargs):
+			self.wrapped = cls(*args, **kwargs)
+
+		def __getattr__(self, name):
+			attr = getattr(self.wrapped, name)
+			is_method = type(attr) == types.MethodType
+			if is_method:
+				return log(attr)
+			else:
+				return attr
+
+	return Wrapper
