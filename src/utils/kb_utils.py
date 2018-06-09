@@ -20,11 +20,8 @@ def clipboard_changed():
 	return count
 
 
-# def add_hotkey(*, hotkey, fn, loop):
-# 	kb.add_hotkey(hotkey,  # FASTER W/O TOR AND SUPP
-# 	              callback=lambda: kb.release(hotkey) or fn(loop))
-
 def add_hotkey(*, hotkey, callback, suppress, trigger_on_release):
+	print(f'registering: {hotkey}')
 	kb.add_hotkey(hotkey=hotkey,
 	              callback=callback,
 	              suppress=suppress, trigger_on_release=trigger_on_release)
@@ -34,7 +31,11 @@ def remove_hotkey(hotkey_or_callback):
 	kb.remove_hotkey(hotkey_or_callback)
 
 
-def do_magic(op_keyword):
+def wait(hotkey=None, suppress=False, trigger_on_release=False):
+	kb.wait(hotkey, suppress, trigger_on_release)
+
+
+def do_magic(op_keyword=None):
 	print('sending end+shift+home+shift+home, ctrl+c')
 	kb.send('end+shift+home+shift+home, ctrl+c')
 	loop.run_until_complete(clipboard_changed())

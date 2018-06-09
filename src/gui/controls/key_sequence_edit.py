@@ -24,7 +24,6 @@ class KeySequenceEdit(QKeySequenceEdit):
 	_hotkeys = {}
 	_gui_focused = False
 
-	@log()
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args)
 		boilerplate(self, **kwargs)
@@ -38,7 +37,6 @@ class KeySequenceEdit(QKeySequenceEdit):
 
 		self._set_hk_ifnot_empty()
 
-	@log()
 	def _set_hk_ifnot_empty(self):
 		if not self.keySequence().isEmpty():
 			self._set_keyboard_hotkey(self.keySequence().toString())
@@ -55,7 +53,6 @@ class KeySequenceEdit(QKeySequenceEdit):
 	def _set_keyboard_hotkey(self, hotkey):
 		self._remove_current_keyboard_hotkey()
 		KeySequenceEdit._hotkeys[self.op_keyword] = hotkey
-		print(f'registering: {hotkey}')
 
 		add_hotkey(hotkey=hotkey,
 		           callback=self._do_magic,
@@ -86,7 +83,6 @@ class KeySequenceEdit(QKeySequenceEdit):
 
 	@log()
 	def _remove_current_keyboard_hotkey(self):
-		# remove current operator's keyboard hotkey
 		with ignore(KeyError):
 			print(f'unregistering: {KeySequenceEdit._hotkeys[self.op_keyword]}')
 			remove_hotkey(KeySequenceEdit._hotkeys[self.op_keyword])
