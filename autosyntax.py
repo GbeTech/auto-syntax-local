@@ -3,7 +3,7 @@ import ctypes
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
 from src import UI
-import sys
+from sys import argv, exit, executable
 from src.utils import kb_utils
 
 """class WinEventFilter(QAbstractNativeEventFilter):
@@ -24,17 +24,17 @@ def check_if_admin():
 		return False
 
 
-def launch_gui():
-	app = QApplication(sys.argv)
+def start_gui():
+	app = QApplication(argv)
 	# noinspection PyArgumentList
 	MainWindow = QMainWindow()
 	ui = UI()
 	ui.setupUi(MainWindow)
 	MainWindow.show()
-	sys.exit(app.exec_())
+	exit(app.exec_())
 
 
-def launch():
+def start():
 	from configuration import Config
 	kb_utils.add_hotkey(
 		hotkey=Config.hotkeys.global_hotkey,
@@ -43,13 +43,59 @@ def launch():
 	kb_utils.wait()
 
 
+def align(key, value):
+	# tabs_num = 3
+	tabs_num = 3 - int((len(key) - 8) / 8)
+	# if len(key) >= 24:
+	# 	tabs_num = 1
+	# elif len(key) >= 16:
+	# 	tabs_num = 2
+
+	tabs = '\t' * tabs_num
+	return f'{key}{tabs}{value}'
+
+
+def help():
+	print('\n'.join([f'\nAUTOSYNTAX HELP',
+	                 f'----------------',
+	                 f'commands:',
+	                 f'--------',
+	                 align('autosyntax start', 'start autosyntax'),
+	                 align('autosyntax gui', 'start autosyntax with gui'),
+	                 align('autosyntax --help', 'show this message'),
+	                 align('autosyntax --config [setting]', 'show configuration wizard [of setting]'),
+	                 ]))
+
+
+def config():
+	print('\n'.join([f'\nAUTOSYNTAX CONFIGURATION',
+	                 f'------------------------',
+	                 f'commands:',
+	                 f'--------',
+	                 align('autosyntax start', 'start autosyntax'),
+	                 align('autosyntax gui', 'start autosyntax with gui'),
+	                 align('autosyntax --help', 'show this message'),
+	                 align('autosyntax --config', 'show configuration wizard'),
+	                 ]))
+
+
 if __name__ == "__main__":
 	if check_if_admin():
-		# launch_gui()
-		if 'gui' in sys.argv:
-			launch_gui()
-		else:
-			launch()
+		try:
+			if argv[1] == 'start':
+				start()
 
+			elif argv[1] == 'gui':
+				start_gui()
+
+			elif argv[1] == '--help':
+				help()
+
+			elif argv[1] == '--config':
+				config()
+			else:
+				help()
+		except IndexError:
+			help()
 	else:
-		ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, "", None, 1)
+		ctypes.windll.shell32.ShellExecuteW(None, "runas", executable, "", None, 1)
