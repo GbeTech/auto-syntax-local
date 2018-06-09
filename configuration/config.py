@@ -6,19 +6,19 @@ import os
 #
 CONFIG_DIRNAME = 'configuration'
 CONFIG_FILENAME = 'config.ini'
-CONFIG_FILENAME_PATH = os.path.join(CONFIG_DIRNAME, CONFIG_FILENAME)
+CONFIG_FILE_FULLPATH = os.path.join(CONFIG_DIRNAME, CONFIG_FILENAME)
 
 
 def _load_config_ini():
 	try:
 		ini = configparser.ConfigParser()
-		ini.read(CONFIG_FILENAME_PATH)
+		ini.read(CONFIG_FILE_FULLPATH)
 		return ini
 	except FileNotFoundError as e:
 		raise FileNotFoundError('\n'.join([f'configuration file not found.',
 		                                   f'CONFIG_DIRNAME: {CONFIG_DIRNAME}',
 		                                   f'CONFIG_FILENAME: {CONFIG_FILENAME}',
-		                                   f'CONFIG_FILENAME_PATH: {CONFIG_FILENAME_PATH}',
+		                                   f'CONFIG_FILE_FULLPATH: {CONFIG_FILE_FULLPATH}',
 		                                   f'getcwd: {os.getcwd()}',
 		                                   f'listdir: {os.listdir()}',
 		                                   f'original error: {e}']))
@@ -32,3 +32,9 @@ class Hotkeys:
 class ConfigMgr:
 	_ini = _load_config_ini()
 	hotkeys = Hotkeys(_ini['Hotkeys'])
+
+	@staticmethod
+	def set(section, key, value):
+		ConfigMgr._ini[section][key] = value
+		with open(CONFIG_FILE_FULLPATH, 'w') as configfile:
+			ConfigMgr._ini.write(configfile)

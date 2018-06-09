@@ -1,4 +1,4 @@
-from shell_screens.mainscreen import align, MainScreen
+from . import MainScreen
 
 
 def main():

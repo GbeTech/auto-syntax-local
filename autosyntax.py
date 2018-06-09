@@ -44,7 +44,7 @@ def start():
 	kb_utils.wait()
 
 
-if __name__ == "__main__":
+def main():
 	if check_if_admin():
 		try:
 			if argv[1] == 'start':
@@ -57,12 +57,18 @@ if __name__ == "__main__":
 				screens.help.main()
 
 			elif argv[1] == '--config':
-				screens.config.main()
+				args = argv[2:] if bool(argv[2:]) else None
+				screens.config.main(args)
 			else:
 				screens.help.main()
-		# screens.help.main()
 		except IndexError:
 			screens.help.main()
-	# screens.help.main()
 	else:
 		ctypes.windll.shell32.ShellExecuteW(None, "runas", executable, "", None, 1)
+
+
+if __name__ == "__main__":
+	# argv.append('--config')
+	# argv.append('hotkeys')
+	# argv.append('global=ctrl+p')
+	main()

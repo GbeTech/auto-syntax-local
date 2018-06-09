@@ -3,7 +3,10 @@ from typing import List
 
 def align(msgs: dict) -> List[str]:
 	longest_key_len = max([len(key) for key in msgs.keys()])
+
 	tabs_max = int(longest_key_len / 8)
+	# Limits `tabs_max` to minimum 1, not 0
+	tabs_max = tabs_max if tabs_max != 0 else 1
 	ret = []
 	for key, value in msgs.items():
 		# ONLY NEEDED IN PYCHARM?
@@ -35,7 +38,6 @@ class Screen(ABC):
 class Subscreen(Screen):
 	def __init__(self, title, msgs: dict):
 		super().__init__(title)
-		# self.title = f'\n{_underline(title)}'
 		self.msgs: [] = align(msgs)
 
 	def __str__(self):
@@ -48,7 +50,9 @@ class MainScreen(Screen):
 		self.subscreens: List[Subscreen] = []
 
 	def __str__(self):
-		return '\n'.join([self.title, *[ss.__str__() for ss in self.subscreens]])
+		subscreens_pretty = [ss.__str__() for ss in self.subscreens]
+		return '\n'.join([self.title,
+		                  *subscreens_pretty])
 
 	def add_subscreen(self, title, msgs: dict):
 		self.subscreens.append(Subscreen(title, msgs))
