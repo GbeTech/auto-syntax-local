@@ -1,4 +1,3 @@
-from .atom import Atom
 from src.utils import ignore
 
 from src.operators import Operator
@@ -8,10 +7,6 @@ from src.operators import Operator
 class Expression:
 
 	def __init__(self, clp, is_indented, op_keyword=None):
-		"""
-		:type operator: Operator
-		:type atoms: list[Atom]
-		"""
 		self.operator = ''
 		self.l_side = None
 		self.r_side = ''
