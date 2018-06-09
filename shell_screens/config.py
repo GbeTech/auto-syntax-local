@@ -1,4 +1,4 @@
-from shell_screens.screen import Screen, Subscreen
+from shell_screens.mainscreen import MainScreen, Subscreen
 
 
 def hotkeys():
@@ -29,7 +29,7 @@ def main():
 	cmnds_fns = {
 		'hotkeys':   hotkeys,
 		'operators': operators}
-	s = Screen('AUTOSYNTAX CONFIGURATION')
+	s = MainScreen('AUTOSYNTAX CONFIGURATION')
 	s.add_subscreen('commands', {
 		'hotkeys':   'configure hotkeys',
 		'operators': 'configure operators'})

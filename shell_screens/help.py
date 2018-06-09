@@ -1,8 +1,8 @@
-from shell_screens.screen import align, Screen
+from shell_screens.mainscreen import align, MainScreen
 
 
 def main():
-	s = Screen('AUTOSYNTAX HELP')
+	s = MainScreen('AUTOSYNTAX HELP')
 	s.add_subscreen('commands', {
 		'autosyntax start':              'start autosyntax',
 		'autosyntax gui':                'start autosyntax with gui',

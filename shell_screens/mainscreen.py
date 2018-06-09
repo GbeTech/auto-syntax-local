@@ -23,7 +23,7 @@ def _underline(line) -> str:
 from abc import ABC, abstractmethod
 
 
-class AbsScreen(ABC):
+class Screen(ABC):
 	@abstractmethod
 	def __init__(self, title, *args):
 		self.title = f'\n{_underline(title)}'
@@ -32,7 +32,7 @@ class AbsScreen(ABC):
 		print(f'{self}\n')
 
 
-class Subscreen(AbsScreen):
+class Subscreen(Screen):
 	def __init__(self, title, msgs: dict):
 		super().__init__(title)
 		# self.title = f'\n{_underline(title)}'
@@ -42,7 +42,7 @@ class Subscreen(AbsScreen):
 		return '\n'.join([self.title, *self.msgs])
 
 
-class Screen(AbsScreen):
+class MainScreen(Screen):
 	def __init__(self, title):
 		super().__init__(title)
 		self.subscreens: List[Subscreen] = []
