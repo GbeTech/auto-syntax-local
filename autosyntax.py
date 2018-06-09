@@ -43,16 +43,21 @@ def start():
 	kb_utils.wait()
 
 
-def align(key, value):
-	# tabs_num = 3
+def align_old(key, value):
 	tabs_num = 3 - int((len(key) - 8) / 8)
-	# if len(key) >= 24:
-	# 	tabs_num = 1
-	# elif len(key) >= 16:
-	# 	tabs_num = 2
-
 	tabs = '\t' * tabs_num
 	return f'{key}{tabs}{value}'
+
+
+def align(msgs: dict):
+	longest_key = max([len(key) for key in msgs.keys()])
+	tabs_max = int(longest_key / 8)
+	ret = []
+	for key, value in msgs.items():
+		tabs_num = 1 + tabs_max - int(len(key) / 8)
+		tabs = '\t' * tabs_num
+		ret.append(f'{key}{tabs}{value}')
+	return ret
 
 
 def help():
@@ -60,11 +65,11 @@ def help():
 	                 f'----------------',
 	                 f'commands:',
 	                 f'--------',
-	                 align('autosyntax start', 'start autosyntax'),
-	                 align('autosyntax gui', 'start autosyntax with gui'),
-	                 align('autosyntax --help', 'show this message'),
-	                 align('autosyntax --config [setting]', 'show configuration wizard [of setting]'),
-	                 ]))
+	                 *align({
+		                 'autosyntax start':              'start autosyntax',
+		                 'autosyntax gui':                'start autosyntax with gui',
+		                 'autosyntax --help':             'show this message',
+		                 'autosyntax --config [setting]': 'show configuration wizard [of setting]'})]))
 
 
 def config():
@@ -72,11 +77,11 @@ def config():
 	                 f'------------------------',
 	                 f'commands:',
 	                 f'--------',
-	                 align('autosyntax start', 'start autosyntax'),
-	                 align('autosyntax gui', 'start autosyntax with gui'),
-	                 align('autosyntax --help', 'show this message'),
-	                 align('autosyntax --config', 'show configuration wizard'),
+	                 *align({
+		                 'hotkeys':   'configure hotkeys',
+		                 'operators': 'configure operators'}),
 	                 ]))
+	_input = input()
 
 
 if __name__ == "__main__":
@@ -96,6 +101,6 @@ if __name__ == "__main__":
 			else:
 				help()
 		except IndexError:
-			help()
+			config()
 	else:
 		ctypes.windll.shell32.ShellExecuteW(None, "runas", executable, "", None, 1)
