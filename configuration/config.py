@@ -29,6 +29,6 @@ class Hotkeys:
 		self.global_hotkey = hotkeys['global_hotkey']
 
 
-class Config:
+class ConfigMgr:
 	_ini = _load_config_ini()
 	hotkeys = Hotkeys(_ini['Hotkeys'])

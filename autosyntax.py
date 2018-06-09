@@ -2,6 +2,7 @@ import ctypes
 
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
+import shell_screens as screens
 from src import UI
 from sys import argv, exit, executable
 from src.utils import kb_utils
@@ -35,53 +36,12 @@ def start_gui():
 
 
 def start():
-	from configuration import Config
+	from configuration import ConfigMgr
 	kb_utils.add_hotkey(
-		hotkey=Config.hotkeys.global_hotkey,
+		hotkey=ConfigMgr.hotkeys.global_hotkey,
 		callback=kb_utils.do_magic,
 		suppress=True, trigger_on_release=True)
 	kb_utils.wait()
-
-
-def align_old(key, value):
-	tabs_num = 3 - int((len(key) - 8) / 8)
-	tabs = '\t' * tabs_num
-	return f'{key}{tabs}{value}'
-
-
-def align(msgs: dict):
-	longest_key = max([len(key) for key in msgs.keys()])
-	tabs_max = int(longest_key / 8)
-	ret = []
-	for key, value in msgs.items():
-		tabs_num = 1 + tabs_max - int(len(key) / 8)
-		tabs = '\t' * tabs_num
-		ret.append(f'{key}{tabs}{value}')
-	return ret
-
-
-def help():
-	print('\n'.join([f'\nAUTOSYNTAX HELP',
-	                 f'----------------',
-	                 f'commands:',
-	                 f'--------',
-	                 *align({
-		                 'autosyntax start':              'start autosyntax',
-		                 'autosyntax gui':                'start autosyntax with gui',
-		                 'autosyntax --help':             'show this message',
-		                 'autosyntax --config [setting]': 'show configuration wizard [of setting]'})]))
-
-
-def config():
-	print('\n'.join([f'\nAUTOSYNTAX CONFIGURATION',
-	                 f'------------------------',
-	                 f'commands:',
-	                 f'--------',
-	                 *align({
-		                 'hotkeys':   'configure hotkeys',
-		                 'operators': 'configure operators'}),
-	                 ]))
-	_input = input()
 
 
 if __name__ == "__main__":
@@ -94,13 +54,15 @@ if __name__ == "__main__":
 				start_gui()
 
 			elif argv[1] == '--help':
-				help()
+				screens.help.main()
 
 			elif argv[1] == '--config':
-				config()
+				screens.config.main()
 			else:
-				help()
+				screens.config.main()
+		# screens.help.main()
 		except IndexError:
-			config()
+			screens.config.main()
+		# screens.help.main()
 	else:
 		ctypes.windll.shell32.ShellExecuteW(None, "runas", executable, "", None, 1)
