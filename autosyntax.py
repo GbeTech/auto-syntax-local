@@ -46,29 +46,23 @@ def start():
 
 def main():
 	if check_if_admin():
+		cmnds_fns = {
+			'start':    start,
+			'gui':      start_gui,
+			'--help':   screens.help.main,
+			'--config': lambda: screens.config.main(argv[2:])}
 		try:
-			if argv[1] == 'start':
-				start()
-
-			elif argv[1] == 'gui':
-				start_gui()
-
-			elif argv[1] == '--help':
-				screens.help.main()
-
-			elif argv[1] == '--config':
-				args = argv[2:] if bool(argv[2:]) else None
-				screens.config.main(args)
-			else:
-				screens.help.main()
-		except IndexError:
+			cmnds_fns[argv[1]]()
+		except (KeyError, IndexError):
 			screens.help.main()
+
+
 	else:
 		ctypes.windll.shell32.ShellExecuteW(None, "runas", executable, "", None, 1)
 
 
 if __name__ == "__main__":
-	# argv.append('--config')
+	argv.append('--config')
 	# argv.append('hotkeys')
 	# argv.append('global=ctrl+p')
 	main()

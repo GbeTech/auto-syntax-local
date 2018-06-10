@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Union
 
 
 def align(msgs: dict) -> List[str]:
@@ -28,16 +28,18 @@ from abc import ABC, abstractmethod
 
 class Screen(ABC):
 	@abstractmethod
-	def __init__(self, title, *args):
-		self.title = f'\n{_underline(title)}'
+	def __init__(self, title, subtitle=None, *args):
+		self.title = f'\n{_underline(title)}\n'
+		if subtitle is not None:
+			self.title += f'  *{subtitle}\n'
 
 	def display(self):
 		print(f'{self}\n')
 
 
 class Subscreen(Screen):
-	def __init__(self, title, msgs: dict):
-		super().__init__(title)
+	def __init__(self, title, msgs: dict, subtitle=None):
+		super().__init__(title, subtitle)
 		self.msgs: [] = align(msgs)
 
 	def __str__(self):
@@ -45,8 +47,9 @@ class Subscreen(Screen):
 
 
 class MainScreen(Screen):
-	def __init__(self, title):
-		super().__init__(title)
+	def __init__(self, title, subtitle=None):
+		super().__init__(title, subtitle)
+
 		self.subscreens: List[Subscreen] = []
 
 	def __str__(self):
@@ -54,5 +57,5 @@ class MainScreen(Screen):
 		return '\n'.join([self.title,
 		                  *subscreens_pretty])
 
-	def add_subscreen(self, title, msgs: dict):
-		self.subscreens.append(Subscreen(title, msgs))
+	def add_subscreen(self, subscreen: Subscreen):
+		self.subscreens.append(subscreen)

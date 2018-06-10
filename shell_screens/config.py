@@ -6,13 +6,15 @@ def hotkeys(hotkeys=None):
 	ALIASES = {
 		'global':        'global_hotkey',
 		'global_hotkey': 'global_hotkey'}
-	if hotkeys is None:
+	if hotkeys is None or hotkeys == []:
 		ss = Subscreen('hotkeys config', {
-			'global': 'set the global hotkey'})
+			'global': 'set the global hotkey'},
+		               "You're here: 'autosyntax.py --config hotkeys'")
 		ss.display()
 		_choice = input('choose hotkey to set: ')
 		_value = input('hotkey value: ')
-		print(f'{_choice} hotkey was changed to: {_value}')
+		# print(f'{_choice} hotkey was changed to: {_value}')
+		print(f'Executing --config hotkeys {_choice}={_value}')
 		ConfigMgr.set('Hotkeys', ALIASES[_choice], _value)
 
 	else:
@@ -40,22 +42,22 @@ def main(cmnd=None):
 	cmnds_fns = {
 		'hotkeys':   hotkeys,
 		'operators': operators}
-	if cmnd is None:
-		s = MainScreen('AUTOSYNTAX CONFIGURATION')
-		s.add_subscreen('commands', {
+
+	# If given an empty list or left for default
+	if cmnd is None or cmnd == []:
+		s = MainScreen('AUTOSYNTAX CONFIGURATION',
+		               subtitle="You're here: 'autosyntax.py --config [command]'")
+		s.add_subscreen(Subscreen('commands', {
 			'hotkeys':   'configure hotkeys',
-			'operators': 'configure operators'})
+			'operators': 'configure operators'}))
 
 		s.display()
 		_input = input('type command: ')
 		try:
-			cmnds_fns[_input]()
+			cmnds_fns[_input](cmnd[1:])
 		except KeyError:
 			s.display()
 
 	else:
-		# try:
-		args = cmnd[1:] if bool(cmnd[1:]) else None
-		cmnds_fns[cmnd[0]](args)
-# except IndexError:
-# 	cmnds_fns[cmnd[0]]()
+		# args = cmnd[1:] if bool(cmnd[1:]) else None
+		cmnds_fns[cmnd[0]](cmnd[1:])
