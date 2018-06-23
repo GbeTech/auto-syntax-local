@@ -121,7 +121,7 @@ class SetOperator(Operator, keyword='set'):
 		super().__init__(op_keyword='set')
 
 
-class TupleOperator(Operator, keyword='tuple'):
+class TupleOperator(Operator, keywords=('tuple', '()')):
 	def __init__(self):
 		super().__init__(op_keyword='tuple')
 
