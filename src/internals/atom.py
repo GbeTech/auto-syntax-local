@@ -36,6 +36,7 @@ class AbsAtom(ABC):
 
 	@subject.setter
 	def subject(self, value):
+		# Keep as setter. DefOperator._set_magic_args sets it directly
 		if value.startswith('.'):
 			self.__subject = value[1:]
 			self.is_dotted = True

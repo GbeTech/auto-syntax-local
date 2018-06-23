@@ -10,7 +10,10 @@ class ForOperator(Operator, keyword='for'):
 	def _convert(self):
 		if not self.atoms[0].subject.isdigit():
 			singular = get_singular(self.atoms[0].subject)
-			converted = f'for {singular} in {self.atoms[0].result.replace("*","")}:\n\t'
+			if 'enumerate' in self.atoms[0].builtins:
+				converted = f'for i, {singular} in {self.atoms[0].result.replace("*","")}:\n\t'
+			else:
+				converted = f'for {singular} in {self.atoms[0].result.replace("*","")}:\n\t'
 		else:
 			converted = f'for i in range({self.atoms[0].result}):\n\t'
 		return converted

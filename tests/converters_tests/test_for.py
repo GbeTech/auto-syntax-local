@@ -64,3 +64,7 @@ def test_14():
 
 def test_15():
 	assert get_expression('for enumerate things') == 'for i, thing in enumerate(things):\n\t'
+
+
+def test_16():
+	assert get_expression('for enumerate ireland') == 'for i, item in enumerate(ireland):\n\t'
