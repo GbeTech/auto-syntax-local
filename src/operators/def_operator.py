@@ -79,9 +79,11 @@ class DefOperator(Operator, keyword='def'):
 		return r_side
 
 	def _handle_multiple_atoms(self) -> Indentation:
+		from configuration import ConfigMgr
 		tri_quote = '"""'
 		indentation = Indentation(f'def {self.name.subject}(')
-		indentation.add_indented_line(tri_quote)
+		if not ConfigMgr.general.type_hints_new:
+			indentation.add_indented_line(tri_quote)
 
 		for mag_arg in self.magic_args:
 			indentation.add_word_to_last_line([mag_arg, ', '])
@@ -92,21 +94,38 @@ class DefOperator(Operator, keyword='def'):
 			with ignore(AttributeError):
 				indentation.add_word_to_last_line(f'={atom.default}')
 			with ignore(AttributeError):
-				indentation.next().add_line(f':type {atom.subject}: {atom.typing}')
+				if ConfigMgr.general.type_hints_new:
+					indentation.add_word_to_last_line(f': {atom.typing}')
+				else:
+					indentation.next().add_line(f':type {atom.subject}: {atom.typing}')
+
 			indentation.add_word_to_last_line(', ')
 
 		else:
 			# self._close_line_w_parenthesis(indentation)
-			indentation.close_line_w_parenthesis()
+			if ConfigMgr.general.type_hints_new:
+				indentation.close_line_w_parenthesis(colon=False)
+				try:
+					if isinstance(self.name, TypedAtom):
+						# noinspection PyUnresolvedReferences
+						indentation.add_word_to_last_line(f' -> {self.name.typing}:')
+				except AttributeError as e:
+					print(self.name)
+					raise e
 
-		with ignore(AttributeError):
-			# noinspection PyUnresolvedReferences
-			indentation.next().add_line(f':rtype: {self.name.typing}')
 
-		if indentation.next().is_word_in_any_line('type'):
-			indentation.next().add_line(tri_quote)
-		else:
-			indentation.next().lines = []
+			else:
+				indentation.close_line_w_parenthesis()
+
+		if not ConfigMgr.general.type_hints_new:
+			with ignore(AttributeError):
+				# noinspection PyUnresolvedReferences
+				indentation.next().add_line(f':rtype: {self.name.typing}')
+
+			if indentation.next().is_word_in_any_line('type'):
+				indentation.next().add_line(tri_quote)
+			else:
+				indentation.next().lines = []
 
 		if self.name.subject == '__init__':
 			for atom in self.atoms:

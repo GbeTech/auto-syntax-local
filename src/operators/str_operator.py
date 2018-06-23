@@ -2,8 +2,11 @@ from . import PrintOperator
 
 
 class StrOperator(PrintOperator, keywords=('str', "'", '"', "''", '""')):
-	def __init__(self, chosen_keyword):
+	def __init__(self):
 		super().__init__()
+		self.create_line = lambda x, f: f"{f}'{x}'"
+
+	def set_quote_type(self, chosen_keyword):
 		if '"' in chosen_keyword:
 			self.create_line = lambda x, f: f'{f}"{x}"'
 		else:

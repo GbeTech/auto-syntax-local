@@ -44,15 +44,15 @@ def _validate_config_ini(ini):
 	return empty_entries
 
 
-# else:
-# 	return False
-# except KeyError as e:
-# 	raise KeyError(f'INI validation failed. Missing: section {section}, key {e}')
-def set_ini_entry(ini, section, key, value):
+def _set_ini_entry(ini, section, key, value):
 	ini[section][key] = value
 	with open(CONFIG_FILE_FULLPATH, 'w') as configfile:
 		ini.write(configfile)
 	return ini
+
+
+def str_to_bool(value):
+	return value.lower() == 'true'
 
 
 class Hotkeys:
@@ -63,7 +63,7 @@ class Hotkeys:
 
 class General:
 	def __init__(self, options: dict):
-		self.type_hints_new = options['type_hints_new']
+		self.type_hints_new = str_to_bool(options['type_hints_new'])
 
 
 class ConfigMgr:
@@ -74,10 +74,14 @@ class ConfigMgr:
 		for section, k_v_pairs in empty_entries.items():
 			for key, value in k_v_pairs.items():
 				print(f'  Restoring [{section}] | {key}: {value}')
-				_ini = set_ini_entry(_ini, section, key, value)
+				_ini = _set_ini_entry(_ini, section, key, value)
 
 		print('config.ini rebuilt successfully.')
 	else:
 		print('config.ini validation successful.')
 	hotkeys = Hotkeys(_ini['Hotkeys'])
 	general = General(_ini['General'])
+
+	@staticmethod
+	def set(section, key, value):
+		return _set_ini_entry(ConfigMgr._ini, section, key, value)

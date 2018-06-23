@@ -16,7 +16,13 @@ class Expression:
 		self.set_equation_sides(clp)
 		self.set_operator_and_items(op_keyword)
 		with ignore(AttributeError):
+			# Class and Def ops. have `set_is_within_class`
 			self.operator.set_is_within_class(is_indented)
+
+		with ignore(AttributeError):
+			# Str op. has this attribute
+			self.operator.set_quote_type(op_keyword)
+
 		if self.l_side is not None:
 			if not self.operator.assignment_possible:
 				return

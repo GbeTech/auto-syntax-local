@@ -37,11 +37,15 @@ class Operator:
 
 	@classmethod
 	def by_keyword(cls, keyword):
-		try:
-			return cls._operators[keyword](keyword)
-		except TypeError:
-			# __init__ doesn't take any argument. StrOperator takes an argument.
-			return cls._operators[keyword]()
+		"""try:
+	return cls._operators[keyword](keyword)
+except (TypeError, KeyError):
+	# __init__ usually doesn't take any argument.
+	# StrOperator takes an argument, so try should succeed.
+	# DefOperator takes an argument but for a different use. Should end up here.
+	return cls._operators[keyword]()"""
+
+		return cls._operators[keyword]()
 
 	#
 	# @staticmethod
@@ -96,6 +100,8 @@ class Operator:
 
 	def __eq__(self, other):
 		return other == self.op_keyword
+
+
 
 	@staticmethod
 	def _construct_atom_with_builtins(items_raw, i):

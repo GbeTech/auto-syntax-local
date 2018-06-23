@@ -182,6 +182,12 @@ def test_22():
 	assert get_expression(f"def what hi args kwargs") == expected
 
 
+def test_23():
+	expected = f"""def what(hi:str):
+	"""
+	assert get_expression(f"def what hi str") == expected
+
+
 @pytest.mark.skip
 def test_119():
 	expected = f"""def what(p1='1'):
