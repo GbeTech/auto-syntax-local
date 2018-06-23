@@ -1,9 +1,0 @@
-{
-  "tests/converters_tests/test_str.py::test_000": true,
-  "tests/converters_tests/test_str.py::test_001": true,
-  "tests/converters_tests/test_str.py::test_002": true,
-  "tests/converters_tests/test_str.py::test_003": true,
-  "tests/converters_tests/test_str.py::test_004": true,
-  "tests/converters_tests/test_str.py::test_005": true,
-  "tests/converters_tests/test_str.py::test_006": true
-}
