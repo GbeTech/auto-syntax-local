@@ -27,6 +27,7 @@ def _load_config_ini():
 class Hotkeys:
 	def __init__(self, hotkeys: dict):
 		self.global_hotkey = hotkeys['global_hotkey']
+		self.quit_hotkey = hotkeys['quit_hotkey']
 
 
 class ConfigMgr:

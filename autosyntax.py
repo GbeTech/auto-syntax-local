@@ -41,7 +41,9 @@ def start():
 		hotkey=ConfigMgr.hotkeys.global_hotkey,
 		callback=kb_utils.do_magic,
 		suppress=True, trigger_on_release=True)
-	kb_utils.wait()
+
+	print(f'press {ConfigMgr.hotkeys.quit_hotkey} to exit')
+	kb_utils.wait(ConfigMgr.hotkeys.quit_hotkey)
 
 
 def main():
@@ -62,7 +64,7 @@ def main():
 
 
 if __name__ == "__main__":
-	argv.append('--config')
+	# argv.append('--config')
 	# argv.append('hotkeys')
 	# argv.append('global=ctrl+p')
 	main()
