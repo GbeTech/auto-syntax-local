@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
 	name="autosyntax",
-	version="0.0.1",
+	version="1.0.1",
 	author="Gilad Barnea",
 	author_email="gbetech@gmail.com",
-	description="A small example package",
+	description="An emmet-like app for python. Autosyntax converts english words to full python code.",
 	long_description=long_description,
 	long_description_content_type="text/markdown",
 	url="https://github.com/GbeTech/autosyntax",
