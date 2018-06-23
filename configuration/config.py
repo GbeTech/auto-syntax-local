@@ -8,6 +8,14 @@ CONFIG_DIRNAME = 'configuration'
 CONFIG_FILENAME = 'config.ini'
 CONFIG_FILE_FULLPATH = os.path.join(CONFIG_DIRNAME, CONFIG_FILENAME)
 
+INI_REPR = {
+	'Hotkeys': {
+		'quit_hotkey':   'ctrl+c',
+		'global_hotkey': 'ctrl+g'},
+	'General': {
+		'type_hints_new': 'True'}
+	}
+
 
 def _load_config_ini():
 	try:
@@ -24,18 +32,52 @@ def _load_config_ini():
 		                                   f'original error: {e}']))
 
 
+def _validate_config_ini(ini):
+	empty_entries = {}
+	for section, k_v_pairs in INI_REPR.items():
+		for key, value in k_v_pairs.items():
+			try:
+				if ini[section][key] != '':
+					continue
+			except KeyError:
+				empty_entries[section] = {key: value}
+	return empty_entries
+
+
+# else:
+# 	return False
+# except KeyError as e:
+# 	raise KeyError(f'INI validation failed. Missing: section {section}, key {e}')
+def set_ini_entry(ini, section, key, value):
+	ini[section][key] = value
+	with open(CONFIG_FILE_FULLPATH, 'w') as configfile:
+		ini.write(configfile)
+	return ini
+
+
 class Hotkeys:
 	def __init__(self, hotkeys: dict):
 		self.global_hotkey = hotkeys['global_hotkey']
 		self.quit_hotkey = hotkeys['quit_hotkey']
 
 
+class General:
+	def __init__(self, options: dict):
+		self.type_hints_new = options['type_hints_new']
+
+
 class ConfigMgr:
 	_ini = _load_config_ini()
-	hotkeys = Hotkeys(_ini['Hotkeys'])
+	empty_entries = _validate_config_ini(_ini)
+	if bool(empty_entries):
+		print(f'config.ini validation failed. Restoring missing entries defaults...')
+		for section, k_v_pairs in empty_entries.items():
+			for key, value in k_v_pairs.items():
+				print(f'  Restoring [{section}] | {key}: {value}')
+				_ini = set_ini_entry(_ini, section, key, value)
 
-	@staticmethod
-	def set(section, key, value):
-		ConfigMgr._ini[section][key] = value
-		with open(CONFIG_FILE_FULLPATH, 'w') as configfile:
-			ConfigMgr._ini.write(configfile)
+		print('config.ini rebuilt successfully.')
+	else:
+		print('config.ini validation successful.')
+	hotkeys = Hotkeys(_ini['Hotkeys'])
+	general = General(_ini['General'])

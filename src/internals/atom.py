@@ -42,6 +42,7 @@ class AbsAtom(ABC):
 			self.is_dotted = True
 		elif value.startswith('self.'):
 			self.has_self = True
+
 			self.__subject = value
 		else:
 			if 'kwargs' in value:
@@ -55,6 +56,7 @@ class AbsAtom(ABC):
 					value = '*' + value
 				else:
 					value = value
+
 			self.__subject = value
 
 
