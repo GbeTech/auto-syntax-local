@@ -6,4 +6,3 @@ from .kb_utils import (clipboard_changed,
                        do_magic,
                        get_expression,
                        add_hotkey, remove_hotkey)
-from .gui_utils import (boilerplate)
