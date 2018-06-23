@@ -1,9 +1,9 @@
 from src.operators import Operator
 
 
-class DictOperator(Operator, keywords=('dict', '{}')):
+class DictOperator(Operator):
 	def __init__(self):
-		super().__init__(op_keyword='dict')
+		super().__init__(op_keyword='dict', alias=('dict', '{}'))
 		self.last_atom_subject = ' '
 
 	def _handle_multiple_atoms(self):

@@ -2,12 +2,12 @@
 from src.operators.Operators import Operator
 
 
-class PrintOperator(Operator, keyword='print'):
+class PrintOperator(Operator):
 
-	def __init__(self, op_keyword='print'):
+	def __init__(self, op_keyword='print',**kwargs):
 		self.create_line = lambda x, f: f"print({f}'{x}')"
 		self.assignment_possible = False
-		super().__init__(op_keyword=op_keyword)
+		super().__init__(op_keyword=op_keyword,**kwargs)
 
 	def _handle_single_atom(self):
 		self._parenthesize_stringify()

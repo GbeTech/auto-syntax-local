@@ -2,7 +2,7 @@ from src.operators.Operators import Operator
 from src.utils import get_singular
 
 
-class ForOperator(Operator, keyword='for'):
+class ForOperator(Operator):
 	def __init__(self):
 		super().__init__(op_keyword='for')
 		self.assignment_possible = False

@@ -6,7 +6,7 @@ from src.utils import ignore
 from . import DefOperator
 
 
-class ClassOperator(DefOperator, keyword='class'):
+class ClassOperator(DefOperator):
 	def __init__(self):
 		super().__init__(op_keyword='class')
 		self.name: Atom = None

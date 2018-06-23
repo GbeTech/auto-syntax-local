@@ -1,9 +1,9 @@
 from . import PrintOperator
 
 
-class StrOperator(PrintOperator, keywords=('str', "'", '"', "''", '""')):
+class StrOperator(PrintOperator):
 	def __init__(self):
-		super().__init__()
+		super().__init__(alias=('str', "'", '"', "''", '""'))
 		self.create_line = lambda x, f: f"{f}'{x}'"
 
 	# don't remove, doesn't handle single atom differently than multiple

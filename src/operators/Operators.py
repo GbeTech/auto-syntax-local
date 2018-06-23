@@ -15,20 +15,30 @@ WRAPPERS = {
 class Operator:
 	_operators = {}
 
-	def __init__(self, *, op_keyword):
+	def __init__(self, *, op_keyword, alias=None):
 		self.assignment_possible = True
 		self.op_keyword = op_keyword
+		if alias is None:
+			alias = op_keyword
 
 		self.atoms = []
 
 	def __init_subclass__(cls, **kwargs):
-		try:
-			keywords = kwargs['keywords']
+		cls._add_operator_kw_to_dict(**kwargs)
 
-			for kw in keywords:
-				cls._operators[kw] = cls
-		except KeyError:
-			cls._operators[kwargs['keyword']] = cls
+	def _add_operator_kw_to_dict(self, alias):
+		if isinstance(alias, list):
+			for a in alias:
+				Operator._operators[a] = self
+		else:
+			Operator._operators[alias] = self
+
+	# try:
+	# 	keywords = kwargs['keywords']
+	# 	for kw in keywords:
+	# 		Operator._operators[kw] = self
+	# except KeyError:
+	# 	Operator._operators[kwargs['keyword']] = self
 
 	@classmethod
 	def by_keyword(cls, keyword):
@@ -122,16 +132,18 @@ class Operator:
 # return atoms
 
 
-class SetOperator(Operator, keyword='set'):
+class SetOperator(Operator):
 	def __init__(self):
 		super().__init__(op_keyword='set')
 
 
-class TupleOperator(Operator, keywords=('tuple', '()')):
+class TupleOperator(Operator):
 	def __init__(self):
-		super().__init__(op_keyword='tuple')
+		super().__init__(op_keyword='tuple',
+		                 alias=('tuple', '()'))
 
 
-class ListOperator(Operator, keywords=('list', '[]')):
+class ListOperator(Operator):
 	def __init__(self):
-		super().__init__(op_keyword='list')
+		super().__init__(op_keyword='list',
+		                 alias=('list', '[]'))

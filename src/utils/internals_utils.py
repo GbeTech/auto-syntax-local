@@ -62,9 +62,6 @@ def class_decorator(cls):
 
 			return lambda *args, **kwargs: func(*args, **kwargs)
 
-		def __init_subclass__(cls, **kwargs):
-			super().__init_subclass__(**kwargs)
-
 		def __init__(self, *args, **kwargs):
 			self.wrapped = cls(*args, **kwargs)
 

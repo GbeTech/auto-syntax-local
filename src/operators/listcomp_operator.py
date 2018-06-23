@@ -3,7 +3,7 @@ from src.operators.Operators import Operator
 from src.utils import get_singular
 
 
-class ListCompOperator(Operator, keyword='lcomp'):
+class ListCompOperator(Operator):
 	def __init__(self):
 		super().__init__(op_keyword='lcomp')
 

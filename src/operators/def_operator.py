@@ -8,7 +8,7 @@ from src.internals import (Atom, TypedAtom,
 from src.utils import ignore, surround_with
 
 
-class DefOperator(Operator, keyword='def'):
+class DefOperator(Operator):
 	def __init__(self, op_keyword='def'):
 		super().__init__(op_keyword=op_keyword)
 		self.assignment_possible = False
