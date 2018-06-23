@@ -19,7 +19,8 @@ setuptools.setup(
 	long_description_content_type="text/markdown",
 	url="https://github.com/GbeTech/autosyntax",
 	packages=setuptools.find_packages(),
-	install_requires=['keyboard', 'pyperclip'],
+	install_requires=['keyboard>=0.13.0',
+	                  'pyperclip>=1.6.0'],
 	classifiers=(
 		"Programming Language :: Python :: 3",
 		"License :: OSI Approved :: MIT License",

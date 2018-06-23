@@ -20,7 +20,13 @@ class Operator:
 		self.atoms = []
 
 	def __init_subclass__(cls, **kwargs):
-		cls._operators[kwargs['keyword']] = cls
+		try:
+			keywords = kwargs['keywords']
+			
+			for kw in keywords:
+				cls._operators[kw] = cls
+		except KeyError:
+			cls._operators[kwargs['keyword']] = cls
 
 	@classmethod
 	def by_keyword(cls, keyword):
@@ -119,6 +125,6 @@ class TupleOperator(Operator, keyword='tuple'):
 		super().__init__(op_keyword='tuple')
 
 
-class ListOperator(Operator, keyword='list'):
+class ListOperator(Operator, keywords=('list', '[]')):
 	def __init__(self):
 		super().__init__(op_keyword='list')

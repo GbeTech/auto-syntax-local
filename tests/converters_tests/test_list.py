@@ -103,3 +103,7 @@ def test_22():
 
 def test_23():
 	assert get_expression('list hi str zip self.bye') == "['hi', str(zip(self.bye))]"
+
+
+def test_24():
+	assert get_expression('[] hi bye') == "['hi', 'bye']"
