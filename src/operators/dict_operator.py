@@ -1,7 +1,7 @@
 from src.operators import Operator
 
 
-class DictOperator(Operator, keyword='dict'):
+class DictOperator(Operator, keywords=('dict', '{}')):
 	def __init__(self):
 		super().__init__(op_keyword='dict')
 		self.last_atom_subject = ' '
