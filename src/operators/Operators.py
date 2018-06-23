@@ -132,7 +132,6 @@ class TupleOperator(Operator, keywords=('tuple', '()')):
 		super().__init__(op_keyword='tuple')
 
 
-
 class ListOperator(Operator, keywords=('list', '[]')):
 	def __init__(self):
 		super().__init__(op_keyword='list')

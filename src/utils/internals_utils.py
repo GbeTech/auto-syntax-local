@@ -80,17 +80,4 @@ def class_decorator(cls):
 			else:
 				return attr
 
-	# def __getattr__(self, name):
-	# 	# cls_name = self.wrapped.__class__.__name__
-	# 	try:
-	# 		attr = getattr(self.wrapped, name)
-	# 		is_method = type(attr) == types.MethodType
-	# 		# print(f'{cls_name}')
-	# 		if is_method:
-	# 			return self.log_func(attr)
-	# 		else:
-	# 			return attr
-	# 	except:
-	# 		return getattr(self.wrapped, name)
-
 	return Wrapper
