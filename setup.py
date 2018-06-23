@@ -1,7 +1,13 @@
 import setuptools
 
-with open("README.md", "r") as fh:
-	long_description = fh.read()
+try:
+	with open("README.md", "r") as fh:
+		long_description = fh.read()
+except UnicodeDecodeError:
+	print(f'\n\tUnicodeDecodeError when trying to read'
+	      f'README.md, in setup.py. Trying to read README_SIMPLE.md.\n')
+	with open("README_SIMPLE.md", "r") as fh:
+		long_description = fh.read()
 
 setuptools.setup(
 	name="autosyntax",
