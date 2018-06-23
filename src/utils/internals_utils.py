@@ -52,34 +52,33 @@ def xnor(a, b):
 import types
 
 
-def log(print_doc=False):
-	def real_decorator(func: types.MethodType):
-		def wrapper(*args, **kwargs):
-			print(f'{func.__qualname__}')
-			if print_doc:
-				doc = func.__doc__
-				if doc is not None:
-					print(f'\tdoc: {doc}\n')
+def class_decorator(cls):
+	"""Prints class method name on method call"""
 
-			func(*args, **kwargs)
+	class Wrapper(cls):
+		@staticmethod
+		def log_func(func, *args, **kwargs):
+			print(f'logging {func.__qualname__}')
 
-		return wrapper
+			return lambda *args, **kwargs: func(*args, **kwargs)
 
-	return real_decorator
-
-
-def class_logger(cls):
-	class Wrapper:
+		def __init_subclass__(cls, **kwargs):
+			super().__init_subclass__(**kwargs)
 
 		def __init__(self, *args, **kwargs):
 			self.wrapped = cls(*args, **kwargs)
 
 		def __getattr__(self, name):
-			attr = getattr(self.wrapped, name)
-			is_method = type(attr) == types.MethodType
-			if is_method:
-				return log(attr)
-			else:
-				return attr
+			# cls_name = self.wrapped.__class__.__name__
+			try:
+				attr = getattr(self.wrapped, name)
+				is_method = type(attr) == types.MethodType
+				# print(f'{cls_name}')
+				if is_method:
+					return self.log_func(attr)
+				else:
+					return attr
+			except:
+				return getattr(self.wrapped, name)
 
 	return Wrapper

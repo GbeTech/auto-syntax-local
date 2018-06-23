@@ -4,6 +4,7 @@ from src.utils import xnor
 # from internals.consts import BUILTIN_FUNCTIONS
 
 # from utils.internals_utils import xnor
+from src.utils.internals_utils import class_decorator
 
 WRAPPERS = {
 	'list':  ('[', ']'),
@@ -32,6 +33,11 @@ class Operator:
 	@classmethod
 	def by_keyword(cls, keyword):
 		return cls._operators[keyword]()
+
+	#
+	# @staticmethod
+	# def by_keyword(keyword):
+	# 	return Operator._operators[keyword]()
 
 	def _convert(self):
 		"""

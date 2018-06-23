@@ -40,7 +40,7 @@ def main():
 
 
 if __name__ == "__main__":
-	# argv.append('--config')
+	argv.append('start')
 	# argv.append('hotkeys')
 	# argv.append('global=ctrl+p')
 	main()
