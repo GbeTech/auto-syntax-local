@@ -25,7 +25,7 @@ class AbsAtom(ABC):
 
 	@abstractmethod
 	def __init__(self, subject=''):
-		"""set subject and is_dotted 20.4.18"""
+		"""set subject, is_dotted, has_self and is_digit 23.6.18"""
 		self.is_dotted = False
 		self.has_self = False
 		self.subject = subject
@@ -44,9 +44,16 @@ class AbsAtom(ABC):
 			self.__subject = value
 		else:
 			if 'kwargs' in value:
-				value = '**' + value if '*' not in value else value
+				if '*' not in value:
+					value = '**' + value
+				else:
+					value = value
+
 			elif 'args' in value:
-				value = '*' + value if '*' not in value else value
+				if '*' not in value:
+					value = '*' + value
+				else:
+					value = value
 			self.__subject = value
 
 
@@ -56,14 +63,11 @@ class Atom(AbsAtom):
 		self.result = ''
 		super().__init__(subject)
 
-	def _is_digit(self):
-		return self.subject.isdigit()
-
 	def has_builtins(self):
 		return bool(self.builtins)
 
 	def digit_or_builtins_or_self(self):
-		return self.has_builtins() or self._is_digit() or self.has_self
+		return self.has_builtins() or self.subject.isdigit() or self.has_self
 
 	def dotted_or_builtins_or_self(self):
 		return self.is_dotted or self.has_builtins() or self.has_self

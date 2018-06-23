@@ -14,9 +14,9 @@ def clipboard_changed():
 		yield from asyncio.sleep(0.0001)
 		count += 1
 		new_clp = paste()
-		if new_clp != prev_clp or count >= 45:
+		if new_clp != prev_clp or count >= 35:
 			break
-	print(f'\n\tpolled {count} times until clpbrd change')
+	print(f'\tpolled {count} times until clpbrd change')
 	return count
 
 
@@ -36,16 +36,18 @@ def wait(hotkey=None, suppress=False, trigger_on_release=False):
 
 
 def do_magic(op_keyword=None):
-	print('sending end+shift+home+shift+home, ctrl+c')
+	# print('sending end+shift+home+shift+home, ctrl+c')
 	kb.send('end+shift+home+shift+home, ctrl+c')
 	loop.run_until_complete(clipboard_changed())
 	clp = paste()
-	print('sending home+shift+end')
+	# print('sending home+shift+end')
 	kb.send('home+shift+end')
+
+	# todo: 2 space tabs
 	is_indented = '\t' in clp or '    ' in clp
 	result = get_expression(clp, is_indented, op_keyword)
 	copy(result)
-	print('sending ctrl+v')
+	# print('sending ctrl+v')
 	kb.send('ctrl+v')
 
 

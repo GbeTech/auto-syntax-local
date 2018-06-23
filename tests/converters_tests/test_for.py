@@ -56,3 +56,11 @@ def test_12():
 
 def test_13():
 	assert get_expression('for args') == 'for arg in args:\n\t'
+
+
+def test_14():
+	assert get_expression('for 5') == 'for i in range(5):\n\t'
+
+
+def test_15():
+	assert get_expression('for enumerate things') == 'for i, thing in enumerate(things):\n\t'

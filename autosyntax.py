@@ -30,7 +30,8 @@ def main():
 			'--help':   screens.help.main,
 			'--config': lambda: screens.config.main(argv[2:])}
 		try:
-			cmnds_fns[argv[1]]()
+			# cmnds_fns[argv[1]]()
+			start()
 		except (KeyError, IndexError):
 			screens.help.main()
 
