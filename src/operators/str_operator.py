@@ -1,7 +1,7 @@
 from . import PrintOperator
 
 
-class StrOperator(PrintOperator, keyword='str'):
+class StrOperator(PrintOperator, keywords=('str', "'", '"', "''", '""')):
 	def __init__(self):
 		super().__init__()
 		self.create_line = lambda x, f: f"{f}'{x}'"

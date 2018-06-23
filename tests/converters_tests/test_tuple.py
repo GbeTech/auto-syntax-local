@@ -22,7 +22,8 @@ def test_4():
 
 
 def test_5():
-	assert get_expression('tuple dict min max collection1 collection2') == "(dict(min(max(collection1))), 'collection2')"
+	assert get_expression(
+		'tuple dict min max collection1 collection2') == "(dict(min(max(collection1))), 'collection2')"
 
 
 def test_6():
@@ -75,3 +76,79 @@ def test_15():
 
 def test_26():
 	assert get_expression('tuple hi self.bye') == "('hi', self.bye)"
+
+
+def test_000():
+	assert get_expression('() hi bye') == "('hi', 'bye')"
+
+
+def test_001():
+	assert get_expression('() hi .bye') == "('hi', bye)"
+
+
+def test_002():
+	assert get_expression('my = () hi bye') == "my = ('hi', 'bye')"
+
+
+def test_003():
+	assert get_expression('my = () hi .bye') == "my = ('hi', bye)"
+
+
+def test_004():
+	assert get_expression('() dict min max collection') == 'tuple(dict(min(max(collection))))'
+
+
+def test_05():
+	assert get_expression('() dict min max collection1 collection2') == "(dict(min(max(collection1))), 'collection2')"
+
+
+def test_06():
+	assert get_expression(
+		'() dict min max collection1 collection2 .collection3') == "(dict(min(max(collection1))), 'collection2', " \
+	                                                               "collection3)"
+
+
+def test_07():
+	assert get_expression(
+		'() dict min max collection1 collection2 str collection3') == "(dict(min(max(collection1))), 'collection2', " \
+	                                                                  "" \
+	                                                                  "" \
+	                                                                  "str(collection3))"
+
+
+def test_08():
+	assert get_expression('() dict .collection') == "tuple(dict('collection'))"
+
+
+def test_09():
+	assert get_expression(
+		'my = () dict min max collection1 collection2 str collection3') == "my = (dict(min(max(collection1))), " \
+	                                                                       "'collection2', str(collection3))"
+
+
+def test_010():
+	assert get_expression('() hi') == 'tuple(hi)'
+
+
+def test_011():
+	assert get_expression('() .hi') == "tuple('hi')"
+
+
+def test_012():
+	assert get_expression('my = () hi') == "my = tuple(hi)"
+
+
+def test_013():
+	assert get_expression('my = () .hi') == "my = tuple('hi')"
+
+
+def test_014():
+	assert get_expression('() 1 2') == "(1, 2)"
+
+
+def test_015():
+	assert get_expression('() 1 .2') == "(1, '2')"
+
+
+def test_026():
+	assert get_expression('() hi self.bye') == "('hi', self.bye)"

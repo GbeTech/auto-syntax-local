@@ -105,5 +105,105 @@ def test_23():
 	assert get_expression('list hi str zip self.bye') == "['hi', str(zip(self.bye))]"
 
 
-def test_24():
+def test_00():
 	assert get_expression('[] hi bye') == "['hi', 'bye']"
+
+
+def test_01():
+	assert get_expression('[] hi .bye') == "['hi', bye]"
+
+
+def test_02():
+	assert get_expression('my = [] hi bye') == "my = ['hi', 'bye']"
+
+
+def test_03():
+	assert get_expression('my = [] hi .bye') == "my = ['hi', bye]"
+
+
+def test_04():
+	assert get_expression('[] dict min max collection') == 'list(dict(min(max(collection))))'
+
+
+def test_05():
+	assert get_expression('[] dict min max collection1 collection2') == "[dict(min(max(collection1))), 'collection2']"
+
+
+def test_06():
+	assert get_expression(
+		'[] dict min max collection1 collection2 .collection3') == "[dict(min(max(collection1))), 'collection2', " \
+	                                                               "collection3]"
+
+
+def test_07():
+	assert get_expression(
+		'[] dict min max collection1 collection2 str collection3') == "[dict(min(max(collection1))), 'collection2', " \
+	                                                                  "" \
+	                                                                  "" \
+	                                                                  "str(collection3)]"
+
+
+def test_08():
+	assert get_expression('[] dict .collection') == "list(dict('collection'))"
+
+
+def test_09():
+	assert get_expression(
+		'my = [] dict min max collection1 collection2 str collection3') == "my = [dict(min(max(collection1))), " \
+	                                                                       "'collection2', str(collection3)]"
+
+
+def test_010():
+	assert get_expression('[] hi') == 'list(hi)'
+
+
+def test_011():
+	assert get_expression('[] .hi') == "list('hi')"
+
+
+def test_012():
+	assert get_expression('my = [] hi') == "my = list(hi)"
+
+
+def test_013():
+	assert get_expression('my = [] .hi') == "my = list('hi')"
+
+
+def test_014():
+	assert get_expression('[] 1 2') == "[1, 2]"
+
+
+def test_015():
+	assert get_expression('[] 1 .2') == "[1, '2']"
+
+
+def test_016():
+	assert get_expression('my = [] 1 2') == "my = [1, 2]"
+
+
+def test_017():
+	assert get_expression('my = [] 1 .2') == "my = [1, '2']"
+
+
+def test_018():
+	assert get_expression('[] hi 2') == "['hi', 2]"
+
+
+def test_019():
+	assert get_expression('[] hi .2') == "['hi', '2']"
+
+
+def test_020():
+	assert get_expression('[] hi str 2') == "['hi', str(2)]"
+
+
+def test_021():
+	assert get_expression('[] str .hi zip .2') == "[str('hi'), zip('2')]"
+
+
+def test_022():
+	assert get_expression('[] hi self.bye') == "['hi', self.bye]"
+
+
+def test_023():
+	assert get_expression('[] hi str zip self.bye') == "['hi', str(zip(self.bye))]"

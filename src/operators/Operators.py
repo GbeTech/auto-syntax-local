@@ -17,7 +17,7 @@ class Operator:
 	def __init__(self, *, op_keyword):
 		self.assignment_possible = True
 		self.op_keyword = op_keyword
-		
+
 		self.atoms = []
 
 	def __init_subclass__(cls, **kwargs):

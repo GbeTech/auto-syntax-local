@@ -1,3 +1,23 @@
 [
-  "tests/converters_tests/test_list.py::test_24"
+  "tests/converters_tests/test_str.py::test_0",
+  "tests/converters_tests/test_str.py::test_1",
+  "tests/converters_tests/test_str.py::test_2",
+  "tests/converters_tests/test_str.py::test_3",
+  "tests/converters_tests/test_str.py::test_4",
+  "tests/converters_tests/test_str.py::test_5",
+  "tests/converters_tests/test_str.py::test_6",
+  "tests/converters_tests/test_str.py::test_00",
+  "tests/converters_tests/test_str.py::test_01",
+  "tests/converters_tests/test_str.py::test_02",
+  "tests/converters_tests/test_str.py::test_03",
+  "tests/converters_tests/test_str.py::test_04",
+  "tests/converters_tests/test_str.py::test_05",
+  "tests/converters_tests/test_str.py::test_06",
+  "tests/converters_tests/test_str.py::test_000",
+  "tests/converters_tests/test_str.py::test_001",
+  "tests/converters_tests/test_str.py::test_002",
+  "tests/converters_tests/test_str.py::test_003",
+  "tests/converters_tests/test_str.py::test_004",
+  "tests/converters_tests/test_str.py::test_005",
+  "tests/converters_tests/test_str.py::test_006"
 ]
