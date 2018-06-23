@@ -112,7 +112,6 @@ class Operator:
 	def construct_atoms(self, items_raw):
 		"""Set atom.subject, atom.is_dotted, atom.has_builtins, atom._is_digit for each atom. No any string
 		manipulation"""
-		print('in construct_atoms')
 		# atoms = []
 		items_len = len(items_raw)
 		i = 0
