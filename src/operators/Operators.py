@@ -4,7 +4,7 @@ from src.utils import xnor
 # from internals.consts import BUILTIN_FUNCTIONS
 
 # from utils.internals_utils import xnor
-
+from src.utils.internals_utils import log_methods
 
 WRAPPERS = {
 	'list':  ('[', ']'),
@@ -12,6 +12,7 @@ WRAPPERS = {
 	'set':   ('{', '}'), }
 
 
+# @log_methods
 class Operator:
 	_operators = {}
 
@@ -28,11 +29,19 @@ class Operator:
 			for kw in keywords:
 				cls._operators[kw] = cls
 		except KeyError:
-			cls._operators[kwargs['keyword']] = cls
+			try:
+				cls._operators[kwargs['keyword']] = cls
+			except KeyError:
+				# log_methods get here (Wrapper class)
+				pass
 
 	@classmethod
 	def by_keyword(cls, keyword):
-		return cls._operators[keyword]()
+		try:
+			return cls._operators[keyword](keyword)
+		except TypeError:
+			# __init__ doesn't take any argument. StrOperator takes an argument.
+			return cls._operators[keyword]()
 
 	#
 	# @staticmethod
@@ -103,7 +112,7 @@ class Operator:
 	def construct_atoms(self, items_raw):
 		"""Set atom.subject, atom.is_dotted, atom.has_builtins, atom._is_digit for each atom. No any string
 		manipulation"""
-
+		print('in construct_atoms')
 		# atoms = []
 		items_len = len(items_raw)
 		i = 0

@@ -1,6 +1,6 @@
 import keyboard as kb
 import asyncio
-
+from src.internals import Expression
 from pyperclip import paste, copy
 
 loop = asyncio.get_event_loop()
@@ -50,7 +50,6 @@ def do_magic(op_keyword=None):
 
 
 def get_expression(clp, is_indented, op_keyword):
-	from src.internals import Expression
 	line = Expression(clp, is_indented, op_keyword)
 	result = line.finalize()
 	return result

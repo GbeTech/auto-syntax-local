@@ -1,11 +1,11 @@
 from src.utils import ignore
-from src.utils.internals_utils import class_decorator
+from src.utils.internals_utils import log_methods
 
 from src.operators import Operator
 
 
 # noinspection PyUnresolvedReferences,PyAttributeOutsideInit
-@class_decorator
+# @log_methods
 class Expression:
 
 	def __init__(self, clp, is_indented, op_keyword=None):

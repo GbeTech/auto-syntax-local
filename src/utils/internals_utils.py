@@ -50,13 +50,16 @@ def xnor(a, b):
 	return not a ^ b
 
 
-def class_decorator(cls):
-	"""Prints class method name on method call"""
+def log_methods(cls):
+	"""Prints class and method name on calling methods"""
 
-	class Wrapper:
+	class Wrapper(cls):
 		@staticmethod
-		def log_func(func, *args, **kwargs):
-			print(f'logging {func.__qualname__}')
+		def log_func(func, clsname, *args, **kwargs):
+			if clsname == 'Wrapper':
+				print(f'logging {func.__qualname__}')
+			else:
+				print(f'logging {clsname} {func.__name__}')
 
 			return lambda *args, **kwargs: func(*args, **kwargs)
 
@@ -64,7 +67,12 @@ def class_decorator(cls):
 			self.wrapped = cls(*args, **kwargs)
 			for k, v in cls.__dict__.items():
 				if type(v).__name__ == 'function':
-					v = self.log_func(v)
+					v = self.log_func(v, self.__class__.__name__)
+
+			super().__init__(*args, **kwargs)
+
+		def __init_subclass__(cls, **kwargs):
+			super().__init_subclass__(**kwargs)
 
 		def __getattr__(self, name):
 			# cls_name = self.wrapped.__class__.__name__
