@@ -1,4 +1,5 @@
 from contextlib import contextmanager
+import types
 
 
 def _is_builtin_const(target):
@@ -49,36 +50,47 @@ def xnor(a, b):
 	return not a ^ b
 
 
-import types
-
-
 def class_decorator(cls):
 	"""Prints class method name on method call"""
 
-	class Wrapper(cls):
+	class Wrapper:
 		@staticmethod
 		def log_func(func, *args, **kwargs):
 			print(f'logging {func.__qualname__}')
 
 			return lambda *args, **kwargs: func(*args, **kwargs)
 
-		def __init_subclass__(cls, **kwargs):
-			super().__init_subclass__(**kwargs)
-
 		def __init__(self, *args, **kwargs):
 			self.wrapped = cls(*args, **kwargs)
+			for k, v in cls.__dict__.items():
+				if type(v).__name__ == 'function':
+					v = self.log_func(v)
 
 		def __getattr__(self, name):
 			# cls_name = self.wrapped.__class__.__name__
-			try:
-				attr = getattr(self.wrapped, name)
-				is_method = type(attr) == types.MethodType
-				# print(f'{cls_name}')
-				if is_method:
-					return self.log_func(attr)
-				else:
-					return attr
-			except:
-				return getattr(self.wrapped, name)
+			# try:
+			# 	cls_name = self.wrapped.__class__.__name__
+			# except KeyError:
+			# 	print(self.wrapped)
+			attr = getattr(self.wrapped, name)
+			is_method = type(attr) == types.MethodType
+			# print(f'is {cls_name} of types.MethodType: {is_method}')
+			if is_method:
+				return self.log_func(attr)
+			else:
+				return attr
+
+	# def __getattr__(self, name):
+	# 	# cls_name = self.wrapped.__class__.__name__
+	# 	try:
+	# 		attr = getattr(self.wrapped, name)
+	# 		is_method = type(attr) == types.MethodType
+	# 		# print(f'{cls_name}')
+	# 		if is_method:
+	# 			return self.log_func(attr)
+	# 		else:
+	# 			return attr
+	# 	except:
+	# 		return getattr(self.wrapped, name)
 
 	return Wrapper

@@ -4,7 +4,7 @@ from src.utils import xnor
 # from internals.consts import BUILTIN_FUNCTIONS
 
 # from utils.internals_utils import xnor
-from src.utils.internals_utils import class_decorator
+
 
 WRAPPERS = {
 	'list':  ('[', ']'),
@@ -130,6 +130,7 @@ class SetOperator(Operator, keyword='set'):
 class TupleOperator(Operator, keywords=('tuple', '()')):
 	def __init__(self):
 		super().__init__(op_keyword='tuple')
+
 
 
 class ListOperator(Operator, keywords=('list', '[]')):
