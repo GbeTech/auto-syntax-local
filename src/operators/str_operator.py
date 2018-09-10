@@ -1,11 +1,11 @@
 from . import PrintOperator
 
 
-class StrOperator(PrintOperator, keywords=('str', "'", '"', "''", '""')):
-    def __init__(self, op_keyword):
-        super().__init__(op_keyword)
+class StrOperator(PrintOperator, cls_keywords=('str', "'", '"', "''", '""')):
+    def __init__(self, cls_keyword):
+        super().__init__(cls_keyword)
         self.assignment_possible = True
-        if '"' in self.op_keyword:
+        if '"' in self.cls_keyword:
             self.create_line = lambda x, f: f'{f}"{x}"'
         else:
             self.create_line = lambda x, f: f"{f}'{x}'"
