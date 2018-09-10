@@ -6,7 +6,7 @@ class DictOperator(Operator, cls_keywords=('dict', '{}')):
     def __init__(self, used_keyword):
         super().__init__(used_keyword)
         self.canonical = 'dict'
-        self.last_atom_subject = ' '  # KEEP THE SPACE
+        self.last_atom_subject = ' '  # KEEP SPACE
 
     def handle_atoms(self):
         """last_atom_subject = ''
@@ -27,22 +27,22 @@ class DictOperator(Operator, cls_keywords=('dict', '{}')):
         for atom in self.atoms:
             atom.parenthesize_builtins()
             if condition(atom):
-                dblquote = False
-                atom.stringify_subject(dblquote)
+                atom.stringify_subject()
             atom.close_parenthesis(around=atom.subject)
 
         if is_single_atom:
             return f'{self.canonical}({self.atoms[0].result})'
+
         return self._convert()
 
     def _convert(self):
         r_side = ''
 
-        extend_with = lambda target, ex: f'{target}{ex} '
+        extend_with = lambda target, ext: f'{target}{ext} '
         for idx, atom in enumerate(self.atoms):
             r_side += extend_with(target=atom.result,
-                                  ex=':' if idx % 2 == 0 else ',')
+                                  ext=':' if idx % 2 == 0 else ',')
 
-        converted = extend_with(target=f'{{{r_side.strip()[:-1]}}}', ex=self.last_atom_subject)
+        converted = extend_with(target=f'{{{r_side.strip()[:-1]}}}', ext=self.last_atom_subject)
 
         return converted.strip()

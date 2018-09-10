@@ -9,12 +9,13 @@ from src.utils import stringify_if_not_builtin_const_or_digit, stringify
 def atom_factory(**kwargs):
     """:returns: Defaulted (additional startswith .)/Typed (additional)/Complex (3 args)"""
     try:
-        if kwargs['additional'].startswith('.'):
+        additional = kwargs['additional']
+        if additional.startswith('.'):
             return DefaultedAtom(subject=kwargs['subject'],
-                                 default=kwargs['additional'])
+                                 default=additional)
         else:
             return TypedAtom(subject=kwargs['subject'],
-                             typing=kwargs['additional'])
+                             typing=additional)
     except KeyError:
         return ComplexAtom(subject=kwargs['subject'],
                            default=kwargs['default'],
@@ -89,8 +90,8 @@ class Atom(AbsAtom):
 
     def __str__(self):
         ret = f'subject: {self.subject}'
-        ret += f'builtins: {",".join(self.builtins)}' if self.has_builtins() else ''
-        ret += f'result: {self.result}' if self.result != '' else ''
+        ret += f' | builtins: {", ".join(self.builtins)}' if self.has_builtins() else ''
+        ret += f' | result: {self.result}' if self.result != '' else ''
         return ret
 
 

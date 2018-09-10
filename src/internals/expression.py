@@ -36,6 +36,7 @@ class Expression:
     def set_operator_and_items(self, used_keyword):
         # is_indented = self._remove_indentations()
         if used_keyword:
+            breakpoint()
             items = self.r_side.split()
         else:
             used_keyword, *items = self.r_side.split()
@@ -55,11 +56,9 @@ class Expression:
         return unchanged != self.r_side
 
     def finalize(self):
-        if self.l_side is not None:
-            final = self.l_side + ' = ' + self.r_side
-        else:
-            final = self.r_side
-        return final
+        if self.l_side:
+            return self.l_side + ' = ' + self.r_side
+        return self.r_side
 
     def __str__(self):
         """atoms_results = ', '.join(self.atoms)
