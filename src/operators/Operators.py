@@ -34,7 +34,6 @@ class Operator:
     def _handle_single_atom(self):
         """:rtype: str"""
         self.parenthesize_stringify_atoms(condition=lambda a: a.is_dotted)
-
         return f'{self.canonical}({self.atoms[0].result})'
 
     def _handle_multiple_atoms(self):
@@ -86,6 +85,7 @@ class Operator:
         manipulation"""
         # atoms = []
         items_len = len(items_raw)
+
         i = 0
         while i < items_len:
             if items_raw[i] in BUILTIN_FUNCTIONS:
@@ -97,6 +97,7 @@ class Operator:
                 self.atoms.append(Atom(subject=items_raw[i]))
                 i += 1
                 continue
+        self.is_single_atom = len(self.atoms) == 1
 
 
 # return atoms
@@ -137,11 +138,22 @@ class ListOperator(Operator, cls_keywords=('list', '[]')):
         super().__init__(used_keyword)
         self.canonical = 'list'
         self.wrapper = ('[', ']')
+        self.is_single_atom = False
+
+    def handle_atoms(self):
+        condition = None
+        if self.is_single_atom:
+            condition = lambda a: a.is_dotted
+        self.parenthesize_stringify_atoms(condition)
+
+        if self.is_single_atom:
+            return f'{self.canonical}({self.atoms[0].result})'
+        return self._convert()
 
     def _convert(self) -> str:
         r_side = ''
 
         for atom in self.atoms:
             r_side += f'{atom.result}, '
-        converted = f'[{r_side.strip()[:-1]}]'
+        converted = f'{self.wrapper[0]}{r_side.strip()[:-1]}{self.wrapper[1]}'
         return converted
