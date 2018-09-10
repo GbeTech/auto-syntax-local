@@ -8,13 +8,13 @@ from src.operators import Operator
 # @log_methods
 class Expression:
 
-    def __init__(self, clp, is_indented, op_keyword=None):
+    def __init__(self, clp, is_indented, used_keyword=None):
         self.operator: Operator
         self.l_side = None
         self.r_side = None
         self.items_raw = []
         self.set_equation_sides(clp)
-        self.set_operator_and_items(op_keyword)
+        self.set_operator_and_items(used_keyword)
         with ignore(AttributeError):
             # Class and Def ops. have `set_is_within_class`
             self.operator.set_is_within_class(is_indented)
@@ -33,13 +33,13 @@ class Expression:
             return
         self.r_side = clp
 
-    def set_operator_and_items(self, op_keyword):
+    def set_operator_and_items(self, used_keyword):
         # is_indented = self._remove_indentations()
-        if op_keyword:
+        if used_keyword:
             items = self.r_side.split()
         else:
-            op_keyword, *items = self.r_side.split()
-        self.operator = Operator.by_keyword(op_keyword)
+            used_keyword, *items = self.r_side.split()
+        self.operator = Operator.by_keyword(used_keyword)
         self.items_raw = items
 
     # with ignore(AttributeError):

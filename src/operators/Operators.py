@@ -22,6 +22,7 @@ class Operator:
         self.atoms = []
 
     def __init_subclass__(cls, **kwargs):
+        print(kwargs)
         for kw in kwargs['cls_keywords']:
             cls._operators[kw] = cls
         """try:
@@ -38,15 +39,8 @@ class Operator:
 
     @classmethod
     def by_keyword(cls, used_keyword):
-        """try:
-    return cls._operators[used_keyword](used_keyword)
-except (TypeError, KeyError):
-    # __init__ usually doesn't take any argument.
-    # StrOperator takes an argument, so try should succeed.
-    # DefOperator takes an argument but for a different use. Should end up here.
-    return cls._operators[used_keyword]()"""
-
-        return cls._operators[used_keyword](used_keyword)
+        keyword_ = cls._operators[used_keyword](used_keyword)
+        return keyword_
 
     #
     # @staticmethod

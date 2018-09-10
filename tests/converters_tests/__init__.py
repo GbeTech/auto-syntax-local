@@ -3,8 +3,8 @@
 from src.internals import Expression
 
 
-def get_expression(clp, op_keyword=None):
+def get_expression(clp, used_keyword=None):
     is_indented = '\t' in clp or '    ' in clp
-    line = Expression(clp, is_indented, op_keyword)
+    line = Expression(clp, is_indented, used_keyword)
     result = line.finalize()
     return result

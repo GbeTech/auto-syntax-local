@@ -3,8 +3,8 @@ from src.utils import get_singular
 
 
 class ForOperator(Operator, cls_keywords=('for',)):
-    def __init__(self):
-        super().__init__('for')
+    def __init__(self, used_keyword):
+        super().__init__(used_keyword)
         self.assignment_possible = False
 
     def _convert(self):

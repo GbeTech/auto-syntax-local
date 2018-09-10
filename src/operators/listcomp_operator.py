@@ -4,8 +4,8 @@ from src.utils import get_singular
 
 
 class ListCompOperator(Operator, cls_keywords=('lcomp', 'listcomp', 'list comp')):
-    def __init__(self):
-        super().__init__('lcomp')
+    def __init__(self,used_keyword):
+        super().__init__(used_keyword)
 
     # noinspection PyMethodOverriding
     def _convert(self, subject_singular):
