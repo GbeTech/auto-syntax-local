@@ -57,7 +57,7 @@ class ClassOperator(DefOperator, keyword='class'):
 			if items_raw[0] == 'init':
 				self.init_operator.set_is_within_class(True)
 				self.init_operator.construct_atoms(items_raw)
-				self.init_indented = self.init_operator._handle_multiple_atoms()
+				self.init_indented = self.init_operator._handle_multiple_atoms
 		return items_raw
 
 	def construct_atoms(self, items_raw):

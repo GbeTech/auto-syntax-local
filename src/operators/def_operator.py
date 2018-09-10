@@ -8,6 +8,7 @@ from src.internals import (Atom, TypedAtom,
 from src.utils import ignore, surround_with
 
 
+# noinspection PyUnresolvedReferences
 class DefOperator(Operator, keyword='def'):
 	def __init__(self, op_keyword='def'):
 		super().__init__(op_keyword=op_keyword)
@@ -17,7 +18,7 @@ class DefOperator(Operator, keyword='def'):
 		self.magic_args: List[str] = []
 
 	def handle_atoms(self):
-		indentation = self._handle_multiple_atoms()
+		indentation = self._handle_multiple_atoms
 		r_side = self._convert(indentation)
 		return r_side
 
@@ -78,6 +79,7 @@ class DefOperator(Operator, keyword='def'):
 		r_side = indentation.convert()
 		return r_side
 
+	@property
 	def _handle_multiple_atoms(self) -> Indentation:
 		from configuration import ConfigMgr
 		tri_quote = '"""'
@@ -91,9 +93,9 @@ class DefOperator(Operator, keyword='def'):
 
 		for atom in self.atoms:
 			indentation.add_word_to_last_line(atom.subject)
-			with ignore(AttributeError):
+			if hasattr(atom, 'default'):
 				indentation.add_word_to_last_line(f'={atom.default}')
-			with ignore(AttributeError):
+			if hasattr(atom, 'typing'):
 				if ConfigMgr.general.type_hints_new:
 					indentation.add_word_to_last_line(f': {atom.typing}')
 				else:
@@ -105,13 +107,8 @@ class DefOperator(Operator, keyword='def'):
 			# self._close_line_w_parenthesis(indentation)
 			if ConfigMgr.general.type_hints_new:
 				indentation.close_line_w_parenthesis(colon=False)
-				try:
-					if isinstance(self.name, TypedAtom):
-						# noinspection PyUnresolvedReferences
-						indentation.add_word_to_last_line(f' -> {self.name.typing}:')
-				except AttributeError as e:
-					print(self.name)
-					raise e
+				if hasattr(self.name, 'typing'):
+					indentation.add_word_to_last_line(f' -> {self.name.typing}:')
 
 
 			else:
@@ -119,7 +116,6 @@ class DefOperator(Operator, keyword='def'):
 
 		if not ConfigMgr.general.type_hints_new:
 			with ignore(AttributeError):
-				# noinspection PyUnresolvedReferences
 				indentation.next().add_line(f':rtype: {self.name.typing}')
 
 			if indentation.next().is_word_in_any_line('type'):

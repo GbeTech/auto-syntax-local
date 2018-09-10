@@ -46,6 +46,7 @@ def do_magic(op_keyword=None):
 	# todo: 2 space tabs
 	is_indented = '\t' in clp or '    ' in clp
 	result = get_expression(clp, is_indented, op_keyword)
+
 	copy(result)
 	# print('sending ctrl+v')
 	kb.send('ctrl+v')

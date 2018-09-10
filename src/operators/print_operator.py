@@ -6,8 +6,8 @@ class PrintOperator(Operator, keyword='print'):
 
 	def __init__(self, op_keyword='print'):
 		self.create_line = lambda x, f: f"print({f}'{x}')"
-		self.assignment_possible = False
 		super().__init__(op_keyword=op_keyword)
+		self.assignment_possible = False
 
 	def _handle_single_atom(self):
 		self._parenthesize_stringify()
