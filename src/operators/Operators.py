@@ -31,6 +31,14 @@ class Operator:
     def by_keyword(cls, used_keyword):
         return cls._operators[used_keyword](used_keyword)
 
+    def _convert(self) -> str:
+        r_side = ''
+
+        for atom in self.atoms:
+            r_side += f'{atom.result}, '
+        converted = f'{self.wrapper[0]}{r_side.strip()[:-1]}{self.wrapper[1]}'
+        return converted
+
     def _handle_single_atom(self):
         """:rtype: str"""
         self.parenthesize_stringify_atoms(condition=lambda a: a.is_dotted)
@@ -60,10 +68,23 @@ class Operator:
         atom.close_parenthesis(around=atom.subject)
 
     def handle_atoms(self):
-        if len(self.atoms) == 1:
-            return self._handle_single_atom()
+        is_single_atom = len(self.atoms) == 1
+        if is_single_atom:
+            condition = lambda a: a.is_dotted
         else:
-            return self._handle_multiple_atoms()
+            condition = lambda a: xnor(a.digit_or_builtins_or_self(),
+                                       a.is_dotted)
+
+        for atom in self.atoms:
+            atom.parenthesize_builtins()
+            if condition(atom):
+                atom.stringify_subject()
+            atom.close_parenthesis(around=atom.subject)
+
+        if is_single_atom:
+            return f'{self.canonical}({self.atoms[0].result})'
+
+        return self._convert()
 
     def __eq__(self, other):
         return other == self.used_keyword
@@ -97,7 +118,6 @@ class Operator:
                 self.atoms.append(Atom(subject=items_raw[i]))
                 i += 1
                 continue
-        self.is_single_atom = len(self.atoms) == 1
 
 
 # return atoms
@@ -109,14 +129,6 @@ class SetOperator(Operator, cls_keywords=('set',)):
         self.wrapper = ('{', '}')
         self.canonical = 'set'
 
-    def _convert(self) -> str:
-        r_side = ''
-
-        for atom in self.atoms:
-            r_side += f'{atom.result}, '
-        converted = f'{{{r_side.strip()[:-1]}}}'
-        return converted
-
 
 class TupleOperator(Operator, cls_keywords=('tuple', '()')):
     def __init__(self, used_keyword):
@@ -124,36 +136,9 @@ class TupleOperator(Operator, cls_keywords=('tuple', '()')):
         self.canonical = 'tuple'
         self.wrapper = ('(', ')')
 
-    def _convert(self) -> str:
-        r_side = ''
-
-        for atom in self.atoms:
-            r_side += f'{atom.result}, '
-        converted = f'({r_side.strip()[:-1]})'
-        return converted
-
 
 class ListOperator(Operator, cls_keywords=('list', '[]')):
     def __init__(self, used_keyword):
         super().__init__(used_keyword)
         self.canonical = 'list'
         self.wrapper = ('[', ']')
-        self.is_single_atom = False
-
-    def handle_atoms(self):
-        condition = None
-        if self.is_single_atom:
-            condition = lambda a: a.is_dotted
-        self.parenthesize_stringify_atoms(condition)
-
-        if self.is_single_atom:
-            return f'{self.canonical}({self.atoms[0].result})'
-        return self._convert()
-
-    def _convert(self) -> str:
-        r_side = ''
-
-        for atom in self.atoms:
-            r_side += f'{atom.result}, '
-        converted = f'{self.wrapper[0]}{r_side.strip()[:-1]}{self.wrapper[1]}'
-        return converted
