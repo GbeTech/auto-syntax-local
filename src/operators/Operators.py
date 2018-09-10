@@ -1,31 +1,29 @@
 from src.internals import Atom, BUILTIN_FUNCTIONS
 from src.utils import xnor
 
+
 # from internals.consts import BUILTIN_FUNCTIONS
 
 # from utils.internals_utils import xnor
 
-WRAPPERS = {
-    'list':  ('[', ']'),
-    'tuple': ('(', ')'),
-    'set':   ('{', '}'), }
+# WRAPPERS = {
+#     'list':  ('[', ']'),
+#     'tuple': ('(', ')'),
+#     'set':   ('{', '}'), }
 
 
 # @log_methods
 class Operator:
     _operators = {}
 
-    def __init__(self, cls_keyword):
+    def __init__(self, used_keyword):
         self.assignment_possible = True
-        self.cls_keyword = cls_keyword
-
+        self.used_keyword = used_keyword
         self.atoms = []
 
     def __init_subclass__(cls, **kwargs):
-        cls_keywords = kwargs.get('cls_keywords')
-        if cls_keywords:
-            for kw in cls_keywords:
-                cls._operators[kw] = cls
+        for kw in kwargs['cls_keywords']:
+            cls._operators[kw] = cls
         """try:
             keywords = kwargs['keywords']
 
@@ -39,38 +37,21 @@ class Operator:
                 breakpoint()"""
 
     @classmethod
-    def by_keyword(cls, cls_keyword):
+    def by_keyword(cls, used_keyword):
         """try:
-    return cls._operators[cls_keyword](cls_keyword)
+    return cls._operators[used_keyword](used_keyword)
 except (TypeError, KeyError):
     # __init__ usually doesn't take any argument.
     # StrOperator takes an argument, so try should succeed.
     # DefOperator takes an argument but for a different use. Should end up here.
-    return cls._operators[cls_keyword]()"""
+    return cls._operators[used_keyword]()"""
 
-        return cls._operators[cls_keyword](cls_keyword)
+        return cls._operators[used_keyword](used_keyword)
 
     #
     # @staticmethod
     # def by_keyword(keyword):
     # 	return Operator._operators[keyword]()
-
-    def _convert(self):
-        """
-        :rtype: str
-        """
-        r_side = ''
-        wrapper = WRAPPERS[self.cls_keyword]
-        for atom in self.atoms:
-            r_side += f'{atom.result}, '
-        converted = f'{wrapper[0]}{r_side.strip()[:-1]}{wrapper[1]}'
-        return converted
-
-    def _handle_single_atom(self):
-        """:rtype: str"""
-        self._parenthesize_stringify(condition=lambda a: a.is_dotted)
-
-        return f'{self.cls_keyword}({self.atoms[0].result})'
 
     def _handle_multiple_atoms(self):
         self._parenthesize_stringify()
@@ -102,7 +83,7 @@ except (TypeError, KeyError):
             return self._handle_multiple_atoms()
 
     def __eq__(self, other):
-        return other == self.cls_keyword
+        return other == self.used_keyword
 
     @staticmethod
     def _construct_atom_with_builtins(items_raw, i):
@@ -138,15 +119,60 @@ except (TypeError, KeyError):
 
 
 class SetOperator(Operator, cls_keywords=('set',)):
-    def __init__(self, cls_keyword):
-        super().__init__(cls_keyword)
+    def __init__(self, used_keyword):
+        super().__init__(used_keyword)
+        self.wrapper = ('{', '}')
+
+    def _handle_single_atom(self):
+        """:rtype: str"""
+        self._parenthesize_stringify(condition=lambda a: a.is_dotted)
+
+        return f'set({self.atoms[0].result})'
+
+    def _convert(self) -> str:
+        r_side = ''
+
+        for atom in self.atoms:
+            r_side += f'{atom.result}, '
+        converted = f'{{{r_side.strip()[:-1]}}}'
+        return converted
 
 
 class TupleOperator(Operator, cls_keywords=('tuple', '()')):
-    def __init__(self, cls_keyword):
-        super().__init__(cls_keyword)
+    def __init__(self, used_keyword):
+        super().__init__(used_keyword)
+        self.wrapper = ('(', ')')
+
+    def _handle_single_atom(self):
+        """:rtype: str"""
+        self._parenthesize_stringify(condition=lambda a: a.is_dotted)
+
+        return f'tuple({self.atoms[0].result})'
+
+    def _convert(self) -> str:
+        r_side = ''
+
+        for atom in self.atoms:
+            r_side += f'{atom.result}, '
+        converted = f'({r_side.strip()[:-1]})'
+        return converted
 
 
 class ListOperator(Operator, cls_keywords=('list', '[]')):
-    def __init__(self, cls_keyword):
-        super().__init__(cls_keyword)
+    def __init__(self, used_keyword):
+        super().__init__(used_keyword)
+        self.wrapper = ('[', ']')
+
+    def _handle_single_atom(self):
+        """:rtype: str"""
+        self._parenthesize_stringify(condition=lambda a: a.is_dotted)
+
+        return f'list({self.atoms[0].result})'
+
+    def _convert(self) -> str:
+        r_side = ''
+
+        for atom in self.atoms:
+            r_side += f'{atom.result}, '
+        converted = f'[{r_side.strip()[:-1]}]'
+        return converted

@@ -2,10 +2,10 @@ from . import PrintOperator
 
 
 class StrOperator(PrintOperator, cls_keywords=('str', "'", '"', "''", '""')):
-    def __init__(self, cls_keyword):
-        super().__init__(cls_keyword)
+    def __init__(self, used_keyword):
+        super().__init__(used_keyword)
         self.assignment_possible = True
-        if '"' in self.cls_keyword:
+        if '"' in self.used_keyword:
             self.create_line = lambda x, f: f'{f}"{x}"'
         else:
             self.create_line = lambda x, f: f"{f}'{x}'"

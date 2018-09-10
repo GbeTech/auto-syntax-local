@@ -10,8 +10,8 @@ from src.utils import ignore, surround_with
 
 # noinspection PyUnresolvedReferences
 class DefOperator(Operator, cls_keywords=('def',)):
-    def __init__(self, cls_keyword):
-        super().__init__(cls_keyword)
+    def __init__(self, used_keyword):
+        super().__init__(used_keyword)
         self.assignment_possible = False
         self._is_within_class = False
         self.name: Atom = None

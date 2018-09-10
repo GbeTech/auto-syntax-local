@@ -7,8 +7,8 @@ from . import DefOperator
 
 
 class ClassOperator(DefOperator, cls_keywords=('class', 'cls')):
-    def __init__(self, cls_keyword):
-        super().__init__(cls_keyword)
+    def __init__(self, used_keyword):
+        super().__init__(used_keyword)
         self.name: Atom = None
         self.inheritances: List[str] = []
         self.init_operator = DefOperator()
