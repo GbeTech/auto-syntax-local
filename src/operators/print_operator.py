@@ -10,7 +10,7 @@ class PrintOperator(Operator, cls_keywords=('print',)):
         self.assignment_possible = False
 
     def _handle_single_atom(self):
-        self._parenthesize_stringify()
+        self.parenthesize_stringify_atoms()
 
         return f'{self.used_keyword}({self.atoms[0].result})'
 

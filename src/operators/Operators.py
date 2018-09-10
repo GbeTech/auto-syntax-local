@@ -19,39 +19,29 @@ class Operator:
     def __init__(self, used_keyword):
         self.assignment_possible = True
         self.used_keyword = used_keyword
+
+        self.canonical = ""  # USED BY: Dict, List, Set, Tuple IN: _handle_single_atom
         self.atoms = []
 
     def __init_subclass__(cls, **kwargs):
-        print(kwargs)
         for kw in kwargs['cls_keywords']:
             cls._operators[kw] = cls
-        """try:
-            keywords = kwargs['keywords']
-
-            for kw in keywords:
-                cls._operators[kw] = cls
-        except KeyError:
-            try:
-                cls._operators[kwargs['keyword']] = cls
-            except KeyError:
-                # log_methods get here (Wrapper class)
-                breakpoint()"""
 
     @classmethod
     def by_keyword(cls, used_keyword):
-        keyword_ = cls._operators[used_keyword](used_keyword)
-        return keyword_
+        return cls._operators[used_keyword](used_keyword)
 
-    #
-    # @staticmethod
-    # def by_keyword(keyword):
-    # 	return Operator._operators[keyword]()
+    def _handle_single_atom(self):
+        """:rtype: str"""
+        self.parenthesize_stringify_atoms(condition=lambda a: a.is_dotted)
+
+        return f'{self.canonical}({self.atoms[0].result})'
 
     def _handle_multiple_atoms(self):
-        self._parenthesize_stringify()
+        self.parenthesize_stringify_atoms()
         return self._convert()
 
-    def _parenthesize_stringify(self, condition=None):
+    def parenthesize_stringify_atoms(self, condition=None):
         if isinstance(self.atoms, list):
             for atom in self.atoms:
                 self._parenthesize_stringify_single(atom, condition)
@@ -61,7 +51,7 @@ class Operator:
     @staticmethod
     def _parenthesize_stringify_single(atom, condition, dblquote=False):
         # KEEP STATIC AND ATOM AS PARAMETER
-        if condition is None:
+        if not condition:
             condition = lambda a: xnor(a.digit_or_builtins_or_self(),
                                        a.is_dotted)
 
@@ -116,12 +106,7 @@ class SetOperator(Operator, cls_keywords=('set',)):
     def __init__(self, used_keyword):
         super().__init__(used_keyword)
         self.wrapper = ('{', '}')
-
-    def _handle_single_atom(self):
-        """:rtype: str"""
-        self._parenthesize_stringify(condition=lambda a: a.is_dotted)
-
-        return f'set({self.atoms[0].result})'
+        self.canonical = 'set'
 
     def _convert(self) -> str:
         r_side = ''
@@ -135,13 +120,8 @@ class SetOperator(Operator, cls_keywords=('set',)):
 class TupleOperator(Operator, cls_keywords=('tuple', '()')):
     def __init__(self, used_keyword):
         super().__init__(used_keyword)
+        self.canonical = 'tuple'
         self.wrapper = ('(', ')')
-
-    def _handle_single_atom(self):
-        """:rtype: str"""
-        self._parenthesize_stringify(condition=lambda a: a.is_dotted)
-
-        return f'tuple({self.atoms[0].result})'
 
     def _convert(self) -> str:
         r_side = ''
@@ -155,13 +135,8 @@ class TupleOperator(Operator, cls_keywords=('tuple', '()')):
 class ListOperator(Operator, cls_keywords=('list', '[]')):
     def __init__(self, used_keyword):
         super().__init__(used_keyword)
+        self.canonical = 'list'
         self.wrapper = ('[', ']')
-
-    def _handle_single_atom(self):
-        """:rtype: str"""
-        self._parenthesize_stringify(condition=lambda a: a.is_dotted)
-
-        return f'list({self.atoms[0].result})'
 
     def _convert(self) -> str:
         r_side = ''

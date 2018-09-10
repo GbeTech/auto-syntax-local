@@ -4,6 +4,7 @@ from src.operators import Operator
 class DictOperator(Operator, cls_keywords=('dict', '{}')):
     def __init__(self, used_keyword):
         super().__init__(used_keyword)
+        self.canonical = 'dict'
         self.last_atom_subject = ' '
 
     def _handle_multiple_atoms(self):
@@ -15,15 +16,9 @@ class DictOperator(Operator, cls_keywords=('dict', '{}')):
             self.last_atom_subject += self.atoms[-1].subject
             self.atoms = self.atoms[:-1]
 
-        self._parenthesize_stringify()
+        self.parenthesize_stringify_atoms()
 
         return self._convert()
-
-    def _handle_single_atom(self):
-        """:rtype: str"""
-        self._parenthesize_stringify(condition=lambda a: a.is_dotted)
-
-        return f'dict({self.atoms[0].result})'
 
     def _convert(self):
         r_side = ''
