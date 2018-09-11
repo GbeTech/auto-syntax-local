@@ -26,12 +26,13 @@ class PrintOperator(Operator, cls_keywords=('print',)):
         if not multiple_atoms:
             return f'{self.canonical}({self.atoms[0].result})'
 
-        r_side = ' '.join(atom.result for atom in self.atoms).strip()
+        return self.cleanup(any_dotted_or_builtins)
 
+    def cleanup(self, any_dotted_or_builtins):
+        r_side = ' '.join(atom.result for atom in self.atoms).strip()
         f = ''
         if any_dotted_or_builtins:
             f = 'f'
-
         return self.maybe_fstring(r_side, f)
 
     def process(self, try_brackets, condition, dblquote):

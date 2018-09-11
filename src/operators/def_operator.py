@@ -18,7 +18,7 @@ class DefOperator(Operator, cls_keywords=('def',)):
         self.magic_args: List[str] = []
 
     def handle_atoms(self):
-        indentation = self._handle_multiple_atoms
+        indentation = self._handle_multiple_atoms()
         r_side = self._convert(indentation)
         return r_side
 
@@ -79,7 +79,6 @@ class DefOperator(Operator, cls_keywords=('def',)):
         r_side = indentation.convert()
         return r_side
 
-    @property
     def _handle_multiple_atoms(self) -> Indentation:
         from configuration import ConfigMgr
         tri_quote = '"""'

@@ -1,4 +1,3 @@
-from src.utils import xnor
 from . import PrintOperator
 
 
@@ -25,10 +24,4 @@ class StrOperator(PrintOperator, cls_keywords=('str', "'", '"', "''", '""')):
                                               condition=condition,
                                               dblquote=False)
 
-        r_side = ' '.join(atom.result for atom in self.atoms).strip()
-
-        f = ''
-        if any_dotted_or_builtins:
-            f = 'f'
-
-        return self.maybe_fstring(r_side, f)
+        return self.cleanup(any_dotted_or_builtins)
