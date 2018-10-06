@@ -1,5 +1,5 @@
 from typing import List
-
+import json
 from . import Operator
 from src.internals import (Atom, TypedAtom,
                            atom_factory, BUILTIN_TYPES,
@@ -27,7 +27,7 @@ class DefOperator(Operator, cls_keywords=('def',)):
         if is_within_class:
             self.magic_args.append('self')
 
-    def _set_name(self, items_raw):
+    def _set_method_name(self, items_raw):
         with ignore(IndexError):
             if items_raw[1] in BUILTIN_TYPES:
                 self.name = TypedAtom(items_raw[0], items_raw[1])
@@ -42,15 +42,16 @@ class DefOperator(Operator, cls_keywords=('def',)):
         return items_raw
 
     def _set_magic_args(self):
-        if self._is_within_class:
-            if self.name.subject in MAGIC_FUNCTIONS:
-                for m_arg in (MAGIC_FUNCTIONS[self.name.subject]):
-                    self.magic_args.append(m_arg)
-                self.name.subject = surround_with('__', self.name.subject)
+        if not self._is_within_class:
+            return
+        if self.name.subject in MAGIC_FUNCTIONS:
+            for m_arg in (MAGIC_FUNCTIONS[self.name.subject]):
+                self.magic_args.append(m_arg)
+            self.name.subject = surround_with('__', self.name.subject)
 
     def construct_atoms(self, items_raw):
         i = 0
-        items_raw = self._set_name(items_raw)
+        items_raw = self._set_method_name(items_raw)
         self._set_magic_args()
         rev_items = list(reversed(items_raw))
         items_len = len(items_raw)
@@ -80,10 +81,12 @@ class DefOperator(Operator, cls_keywords=('def',)):
         return r_side
 
     def _handle_multiple_atoms(self) -> Indentation:
-        from configuration import ConfigMgr
+        from config import CFG
         tri_quote = '"""'
         indentation = Indentation(f'def {self.name.subject}(')
-        if not ConfigMgr.general.type_hints_new:
+        type_hints_new = CFG['general']['type_hints_new']
+        if not type_hints_new:
+            # if not ConfigMgr.general.type_hints_new:
             indentation.add_indented_line(tri_quote)
 
         for mag_arg in self.magic_args:
@@ -95,7 +98,7 @@ class DefOperator(Operator, cls_keywords=('def',)):
             if hasattr(atom, 'default'):
                 indentation.add_word_to_last_line(f'={atom.default}')
             if hasattr(atom, 'typing'):
-                if ConfigMgr.general.type_hints_new:
+                if type_hints_new:
                     indentation.add_word_to_last_line(f': {atom.typing}')
                 else:
                     indentation.next().add_line(f':type {atom.subject}: {atom.typing}')
@@ -104,7 +107,7 @@ class DefOperator(Operator, cls_keywords=('def',)):
 
         else:
             # self._close_line_w_parenthesis(indentation)
-            if ConfigMgr.general.type_hints_new:
+            if type_hints_new:
                 indentation.close_line_w_parenthesis(colon=False)
                 if hasattr(self.name, 'typing'):
                     indentation.add_word_to_last_line(f' -> {self.name.typing}:')
@@ -113,7 +116,7 @@ class DefOperator(Operator, cls_keywords=('def',)):
             else:
                 indentation.close_line_w_parenthesis()
 
-        if not ConfigMgr.general.type_hints_new:
+        if not type_hints_new:
             with ignore(AttributeError):
                 indentation.next().add_line(f':rtype: {self.name.typing}')
 

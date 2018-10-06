@@ -89,6 +89,6 @@ class ClassOperator(DefOperator, cls_keywords=('class', 'cls')):
         r_side = self._format_indentation_lvls(indentation_lvls)
         return r_side"""
 
-# def _set_name(self, items_raw):
+# def _set_method_name(self, items_raw):
 # 	self.name = items_raw[0]
 # 	return items_raw[1:]

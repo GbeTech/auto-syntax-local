@@ -1,1 +1,1 @@
-from .config import ConfigMgr
+from .confjson import CFG
