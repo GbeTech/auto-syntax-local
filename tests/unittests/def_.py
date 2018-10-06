@@ -1,20 +1,9 @@
-import unittest
-from src.internals import Expression
 from src.internals import MAGIC_FUNCTIONS
-
-tri_quote = '"""'
-
-
-def get_expression(clp, used_keyword=None):
-    is_indented = '    ' in clp or '    ' in clp
-    line = Expression(clp, is_indented, used_keyword)
-
-    if line.l_side:
-        return line.l_side + ' = ' + line.r_side
-    return line.r_side
+import unittest
+from tests.unittests import get_expression, tri_quote
 
 
-class TestStringMethods(unittest.TestCase):
+class TestDef(unittest.TestCase):
 
     def test_0(self):
         self.assertEqual(get_expression(f'def foo'), f'def foo():\n    ')
@@ -174,7 +163,3 @@ class TestStringMethods(unittest.TestCase):
     {tri_quote}
     """
         self.assertEqual(get_expression(f"def what int p1 str 1"), expected)
-
-
-if __name__ == '__main__':
-    unittest.main()
