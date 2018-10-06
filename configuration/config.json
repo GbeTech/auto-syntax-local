@@ -1,9 +1,0 @@
-{
-    "hotkeys": {
-        "quit_hotkey": "ctrl+i",
-        "global_hotkey": "ctrl+y"
-    },
-    "general": {
-        "type_hints_new": False
-    }
-}
